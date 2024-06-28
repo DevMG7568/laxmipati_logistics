@@ -234,27 +234,27 @@ label {
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #ebebeb;
+    color: #4b4b4b;
 }
 
 /* WebKit, Blink, Edge */
 .form-control:-moz-placeholder {
-    color: #ebebeb;
+    color: #4b4b4b;
 }
 
 /* Mozilla Firefox 4 to 18 */
 .form-control::-moz-placeholder {
-    color: #ebebeb;
+    color: #4b4b4b;
 }
 
 /* Mozilla Firefox 19+ */
 .form-control:-ms-input-placeholder {
-    color: #ebebeb;
+    color: #4b4b4b;
 }
 
 /* Internet Explorer 10-11 */
 .form-control::-ms-input-placeholder {
-    color: #ebebeb;
+    color: #4b4b4b;
 }
 
 /* Microsoft Edge */

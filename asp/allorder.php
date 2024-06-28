@@ -190,7 +190,7 @@ if ($result->num_rows > 0) {
         <div class="bottom">
             <ul class="a">
                 <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="aspget_booking.php">Booking</a></li>
+                <li><a href="aspform.php">Booking</a></li>
                 <li><a href="allorder.php">All Booking</a></li>
                 <li><a href="calculator.php">Rate Calculator</a></li>
                 <li><a href="payment.php">Payment</a></li>

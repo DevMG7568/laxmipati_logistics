@@ -195,7 +195,7 @@ if ($latestId != $latestId1) {
       <div class="bottom">
         <ul class="a">
           <li><a href="dashboard.php">Dashboard</a></li>
-          <li><a href="aspget_booking.php">Booking</a></li>
+          <li><a href="aspform.php">Booking</a></li>
           <li><a href="allorder.php">All Booking</a></li>
           <li><a href="calculator.php">Rate Calculator</a></li>
           <li><a href="payment.php">Payment</a></li>
@@ -213,9 +213,6 @@ if ($latestId != $latestId1) {
 
   <div class="pace  pace-inactive">
     <div class="container" style="height:600px;">
-      <!--<h3><?php //echo $latestId 
-              ?> = <?php //echo $latestId1 
-                    ?></h3>-->
       <form action="aspform.php" role="form" autocomplete="off" enctype="multipart/form-data" method="post" style="height:500px;">
         <div class="row">
           <div class="col-md-12">
@@ -605,26 +602,21 @@ if ($latestId != $latestId1) {
 
                     <div class="col-sm-6">
                       <div class="form-group  required">
-
                         <input id="note" type="text" placeholder="Remarks" class="form-control form-control-sm" name="note">
                       </div>
                     </div>
                   </div>
-
-
-
                 </div>
               </div>
               <div class="card-footer">
                 <div class="text-center">
-                  <!-- <input type="submit" value="Booking" name="asp_get_booking" class="btn btn-primary"> -->
-
+                  <input type="submit" value="Booking" name="asp_get_booking" class="btn btn-primary">
                 </div>
               </div>
             </div>
 
           </div>
-
+        </div>
       </form>
     </div>
 
