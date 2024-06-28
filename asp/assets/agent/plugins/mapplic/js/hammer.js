@@ -1,0 +1,1 @@
+Could not load content for https://vfolo.com/assets/agent/plugins/mapplic/js/hammer.js (HTTP error: status code 404, net::ERR_HTTP_RESPONSE_CODE_FAILURE)
