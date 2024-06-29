@@ -4,6 +4,7 @@
 @include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $latestId = $_POST['latestId'];
 
   $user_name = $_POST['user_name'];
   $order_id = $_POST['order_id'];
@@ -60,6 +61,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $documentImage = '';
   $documentImageBack = '';
   $documentImage1 = '';
+
+  $documentType = $_POST['document_type_id'];
+  $nob = $_POST['nob'];
+  $weight = $_POST['weight'];
+  $orderDate = $_POST['order_currier_date'];
+
+  // Insert data into the 'dj' table
+  $sql_dj = "INSERT INTO get_start (user_name, country, document_type_id, nob, weight, order_currier_date, sh_referance, note)
+          VALUES ('$user_name', '$co_country', '$documentType', '$nob', '$weight', '$orderDate', '$sh_referance', '$note')";
+
+  if ($conn->query($sql_dj) === TRUE) {
+    // Get the generated 'id' from the 'dj' table
+    $book_id = $conn->insert_id;
+  } else {
+    echo "Error: " . $sql_dj . "<br>" . $conn->error;
+  }
+
+  // Extract arrays from the form (assuming these are arrays)
+  $heightArray = $_POST['height'];
+  $widthArray = $_POST['width'];
+  $lengthArray = $_POST['length'];
+  $weightvArray = $_POST['weightv'];
+  $weightbArray = $_POST['weightb'];
+
+  // Loop through the arrays and insert data into the 'dj_get_booking' table
+  for ($i = 0; $i < count($heightArray); $i++) {
+    $height = $heightArray[$i];
+    $width = $widthArray[$i];
+    $length = $lengthArray[$i];
+    $weightv = $weightvArray[$i];
+    $weightb = $weightbArray[$i];
+
+    // Insert data into the 'dj_get_booking' table using the correct 'book_id'
+    $sql_dj_get_booking = "INSERT INTO get_booking (book_id, height, width, length, weightv, weightb)
+                      VALUES ('$book_id', '$height', '$width', '$length', '$weightv', '$weightb')";
+
+    if ($conn->query($sql_dj_get_booking) === TRUE) {
+      // Successfully inserted into 'dj_get_booking' table
+    } else {
+      echo "Error: " . $sql_dj_get_booking . "<br>" . $conn->error;
+    }
+  }
+
 
 
 
@@ -163,6 +207,23 @@ VALUES ('$order_id', '$user_name', '$sh_full_name', '$sh_zip_code', '$sh_add1', 
   }
 }
 
+// Validate if the phone number is not empty
+if (!empty($sh_ph_no)) {
+  // Create a WhatsApp link with the phone number
+  $latestId = "LPIC5000<?php echo $latestId; ?>";
+  $whatsappLink = "https://api.whatsapp.com/send?phone=" + $sh_ph_no + "&text=Hello,%20Tracking%20ID%20is%20" + $latestId;
+
+  // Open the WhatsApp link in a new tab
+  header("Location: $whatsappLink");
+
+  // Wait for a short time (adjust the delay if needed)
+  sleep(1);
+} else {
+  // Display an alert and prevent form submission
+  echo "<script>alert('Please enter a valid phone number.');</script>";
+  // You can also use JavaScript to prevent form submission if needed
+  echo "<script>event.preventDefault();</script>";
+}
 
 
 
