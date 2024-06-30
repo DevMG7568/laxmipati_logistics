@@ -85,8 +85,6 @@ if ($result->num_rows == 1) {
     color: white;
   }
 
-  .dj .rj .bottom {}
-
   .dj .rj .bottom ul.a {
     list-style: none;
     display: block;

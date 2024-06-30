@@ -1105,14 +1105,14 @@ $conn->close();
                           </div>
                         </div>
                       </div>
-                      <!-- <div class="form-group">
+                      <div class="form-group">
                         <div class="row">
                           <label class="col-sm-3 col-form-label">Reference</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control form-control-sm" id="referance_booking" value="" name="co_referance" disabled>
+                            <input type="text" class="form-control form-control-sm" id="co_referance" value="" name="co_referance" disabled>
                           </div>
                         </div>
-                      </div> -->
+                      </div>
                       <div class="dropdown-divider b-b b-dashed b-secondary"></div>
                       <div class="form-group">
                         <div class="row">
@@ -1211,7 +1211,7 @@ $conn->close();
                     </div>
                     <div class="multi-field-wrapper card-body">
                       <div class="multi-fields ">
-                        <div class="multi-field row form-group">
+                        <div class="multi-field row form-group" id="boxDesc">
                           <div class="col-lg-1">
                             <select name="nondg[]" class="form-control form-control-sm" value="0" tabindex="-1">
                               <option value="0">Normal
@@ -1254,8 +1254,7 @@ $conn->close();
                         </div>
                       </div>
                       <br>
-                      <button type="button" class="add-field btn btn-success"><i class="fa-solid fa-plus"></i> Add
-                        More</button>
+                      <button type="button" class="add-field btn btn-success" id="addBtn"><i class="fa-solid fa-plus"></i> Add More</button>
                       <div class="row">
                         <div class="col-lg-4"></div>
                         <div class="col-lg-2">
@@ -1586,7 +1585,7 @@ $conn->close();
                                 <!-- <input class="form-check-input" id="radio1" type="radio" name="document_type_id" value="1" data-bs-original-title="" title="">
                                 <label class="form-check-label" for="radio1">Doc</label> -->
                                 <br>
-                                <input class="form-check-input" id="radio2" checked  type="radio" name="document_type_id" value="2" data-bs-original-title="" title="">
+                                <input class="form-check-input" id="radio2" checked type="radio" name="document_type_id" value="2" data-bs-original-title="" title="">
                                 <label class="form-check-label" for="radio2">Non Doc</label>
                               </label>
                             </div>
@@ -2045,7 +2044,8 @@ $conn->close();
   <script>
     $(document).ready(function() {
       $("#sh_referance").keyup((val) => {
-        $("#referance_booking").val(val.target.value)
+        $("#co_referance").val(val.target.value);
+        $("#referance_booking").val(val.target.value);
       })
     })
   </script>
@@ -2059,8 +2059,104 @@ $conn->close();
   <script>
     $(document).ready(function() {
       $("#co_country").change((val) => {
-        console.log('val.target', val.target)
         $("#country_booking").val(val.target.value)
+      })
+    })
+  </script>
+  <script>
+    function calculateWeightV(value) {
+      var weightValue = $("input[name='weightv[]']").val();
+      var height = document.getElementsByName('height[]');
+      var width = document.getElementsByName('width[]');
+      var length = document.getElementsByName('length[]');
+      var weightv = document.getElementsByName('weightv[]');
+      var weightb = document.getElementsByName('weightb[]');
+      var finalWeight = document.getElementsByName('weight');
+
+      $(document).ready(function() {
+        for (var i = 0; i < height.length; i++) {
+          var h = height[i].value;
+          var w = width[i].value;
+          var l = length[i].value;
+          var final = finalWeight.value;
+
+          if (!weightv[i].value) {
+            weightv[i].value = 0;
+            final = 0;
+          } else {
+            weightv[i].value = Math.round((h * w * l / 5000) * 1000) / 1000;
+            final = Math.ceil(Number(Math.round((h * w * l / 5000) * 1000) / 1000) > Number(weightb[i].value) ? Number(weightv[i].value) : Number(weightb[i].value))
+          }
+
+          $("#weight").val(final)
+        }
+      })
+    };
+
+    $(document).ready(function() {
+      $("input[name='weightb[]']").keyup((val) => {
+        calculateWeightV(val.target.value);
+      })
+      $("input[name='height[]']").keyup((val) => {
+        calculateWeightV(val.target.value);
+      })
+      $("input[name='width[]']").keyup((val) => {
+        calculateWeightV(val.target.value);
+      })
+      $("input[name='length[]']").keyup((val) => {
+        calculateWeightV(val.target.value);
+      })
+    })
+  </script>
+  <script>
+    $(document).ready(function() {
+      function addField(id) {
+        for (i = 1; i <= id; i++) {
+          $("#boxDesc").append(
+            `<div class="col-lg-1">
+            <select name="nondg[]" class="form-control form-control-sm" value="0" tabindex="-1">
+              <option value="0">Normal
+              </option>
+              <option value="1">NonDG
+              </option>
+            </select>
+          </div>
+          <div class="col-lg-1">
+            <input type="number" name="box_no[]" placeholder="Box No" class="form-control form-control-sm" value="1" required="">
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group" id="the-basics">
+              <input class="typeahead form-control form-control-sm" type="text" name="product_name[]" placeholder="Product Name" autocomplete="off" required="">
+            </div>
+          </div>
+          <div class="mb-md hidden-lg hidden-xl">
+          </div>
+          <div class="col-lg-1">
+            <input type="number" name="product_quantity[]" placeholder="Quantity" class="form-control form-control-sm" required="">
+          </div>
+          <div class="mb-md hidden-lg hidden-xl">
+          </div>
+          <div class="col-lg-2">
+            <input type="text" name="price[]" placeholder="Price" class="form-control form-control-sm" required="">
+          </div>
+          <div class="col-lg-2">
+            <input type="number" name="hsn_code[]" placeholder="HSN Code" tabindex="-1" class="form-control form-control-sm">
+          </div>
+          <div class="col-lg-1">
+            <input type="text" name="total_price[]" placeholder="Total Price" class="form-control form-control-sm" readonly>
+          </div>
+          <div class="mb-md hidden-lg hidden-xl">
+          </div>
+          <div class="col-lg-1" style="text-align: center;">
+            <button class="remove-field btn btn-outline-danger btn-circle btn-sm" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Remove">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+          </div>`
+          );
+        }
+      }
+      $("#addBtn").click(() => {
+        addField($("#ibox").html("").length);
       })
     })
   </script>
