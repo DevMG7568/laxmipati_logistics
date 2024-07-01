@@ -1109,7 +1109,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">Reference</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control form-control-sm" id="co_referance" value="" name="co_referance" disabled>
+                            <input type="text" class="form-control form-control-sm" id="co_referance" name="co_referance" disabled>
                           </div>
                         </div>
                       </div>
@@ -1182,7 +1182,7 @@ $conn->close();
                               <div class="row">
                                 <label class="col-sm-3 col-form-label">Invoice No &amp; Date</label>
                                 <div class="col-sm-9">
-                                  <input type="date" id="dateInput" name="invoice_no_date" value="<?php echo $orderDate; ?>" class="form-control form-control-sm">
+                                  <input type="date" id="dateInput" name="invoice_no_date" class="form-control form-control-sm">
                                 </div>
                               </div>
                             </div>
@@ -1206,12 +1206,12 @@ $conn->close();
                   <div class="card">
                     <div class="card-header">
                       <h5 class="card-title">
-                        Box Description - Shipment Weight : <b><?php echo $weight; ?></b>
+                        Box Description
                       </h5>
                     </div>
                     <div class="multi-field-wrapper card-body">
-                      <div class="multi-fields ">
-                        <div class="multi-field row form-group" id="boxDesc">
+                      <div class="multi-fields" id="boxDesc">
+                        <div class="multi-field row form-group" data-id="0">
                           <div class="col-lg-1">
                             <select name="nondg[]" class="form-control form-control-sm" value="0" tabindex="-1">
                               <option value="0">Normal
@@ -1247,7 +1247,7 @@ $conn->close();
                           <div class="mb-md hidden-lg hidden-xl">
                           </div>
                           <div class="col-lg-1" style="text-align: center;">
-                            <button class="remove-field btn btn-outline-danger btn-circle btn-sm" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Remove">
+                            <button class="remove-field btn btn-outline-danger btn-circle btn-sm" id="removeBtn" data-id="0" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Remove">
                               <i class="fa-solid fa-minus"></i>
                             </button>
                           </div>
@@ -1636,7 +1636,7 @@ $conn->close();
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group ">
-                              <input class="form-control form-control-sm" placeholder="Courier Date" name="order_currier_date" id="dateInput" type="date" value="<?php echo $orderDate; ?>">
+                              <input class="form-control form-control-sm" placeholder="Courier Date" name="order_currier_date" type="date">
                             </div>
                           </div>
                         </div>
@@ -1654,11 +1654,6 @@ $conn->close();
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="card-footer">
-                      <div class="text-center">
-                        <input type="submit" value="Booking" name="asp_get_booking" class="btn btn-primary">
-                      </div>
-                    </div> -->
                   </div>
                 </div>
               </div>
@@ -1666,7 +1661,6 @@ $conn->close();
                 <div class="col-md-6 text-right">
                   <input type="submit" name="submit" value="Submit">
                 </div>
-                <br>
               </div>
             </form>
           </section>
@@ -1676,31 +1670,6 @@ $conn->close();
   </div>
   </div>
   </div>
-  <!-- <script>
-    document.getElementById("invoice-form").addEventListener("submit", function(event) {
-      // Get the phone number value
-      var phoneNumber = document.getElementById("co_ph_no").value;
-
-      // Validate if the phone number is not empty
-      if (phoneNumber.trim() !== "") {
-        // Create a WhatsApp link with the phone number
-        var latestId = "LPIC5000<?php echo $latestId; ?>";
-        var whatsappLink = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=Hello,%20Tracking%20ID%20is%20" + latestId;
-
-        // Open the WhatsApp link in a new tab
-        var whatsappWindow = window.open(whatsappLink, '_blank');
-
-        // Wait for a short time (adjust the delay if needed)
-        setTimeout(function() {
-          // Submit the form by triggering a click event on the submit button
-          document.getElementById("submit-button-id").click(); // Replace "submit-button-id" with the actual ID of your submit button
-        }, 1000); // Adjust the delay in milliseconds if needed
-      } else {
-        alert("Please enter a valid phone number.");
-        event.preventDefault(); // Prevent the default form submission
-      }
-    });
-  </script> -->
   <script>
     // Function to set today's date in the date input field
     function setTodayDate() {
@@ -1718,41 +1687,6 @@ $conn->close();
     setTodayDate();
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Function to calculate the total price
-      function calculateTotal() {
-        var total = 0;
-        $("input[name='price[]']").each(function(index) {
-          var price = parseFloat($(this).val()) || 0;
-          var quantity = parseFloat($("input[name='product_quantity[]']").eq(index).val()) || 0;
-          var itemTotal = price * quantity;
-          total += itemTotal;
-        });
-        $("#totalPrice").val(total.toFixed(2)); // Update the total price input field
-      }
-
-      // Function to calculate the total quantity
-      function calculateTotalQuantity() {
-        var totalQuantity = 0;
-        $("input[name='product_quantity[]']").each(function() {
-          var quantity = parseFloat($(this).val()) || 0;
-          totalQuantity += quantity;
-        });
-        $("#totalQuantity").val(totalQuantity); // Update the total quantity input field
-      }
-
-      // Listen for changes in the price and quantity input fields
-      $("input[name='price[]'], input[name='product_quantity[]']").on("input", function() {
-        calculateTotal();
-        calculateTotalQuantity();
-      });
-
-      // Initial calculations
-      calculateTotal();
-      calculateTotalQuantity();
-    });
-  </script>
   <script>
     // Get all the input fields for price, quantity, and total price
     var priceInputs = document.querySelectorAll('input[name="price[]"]');
@@ -2073,25 +2007,23 @@ $conn->close();
       var weightb = document.getElementsByName('weightb[]');
       var finalWeight = document.getElementsByName('weight');
 
-      $(document).ready(function() {
-        for (var i = 0; i < height.length; i++) {
-          var h = height[i].value;
-          var w = width[i].value;
-          var l = length[i].value;
-          var final = finalWeight.value;
+      for (var i = 0; i < height.length; i++) {
+        var h = height[i].value;
+        var w = width[i].value;
+        var l = length[i].value;
+        var final = finalWeight.value;
 
-          if (!weightv[i].value) {
-            weightv[i].value = 0;
-            final = 0;
-          } else {
-            weightv[i].value = Math.round((h * w * l / 5000) * 1000) / 1000;
-            final = Math.ceil(Number(Math.round((h * w * l / 5000) * 1000) / 1000) > Number(weightb[i].value) ? Number(weightv[i].value) : Number(weightb[i].value))
-          }
-
-          $("#weight").val(final)
+        if (!weightv[i].value) {
+          weightv[i].value = 0;
+          final = 0;
+        } else {
+          weightv[i].value = Math.round((h * w * l / 5000) * 1000) / 1000;
+          final = Math.ceil(Number(Math.round((h * w * l / 5000) * 1000) / 1000) > Number(weightb[i].value) ? Number(weightv[i].value) : Number(weightb[i].value))
         }
-      })
-    };
+
+        $("#weight").val(final)
+      }
+    }
 
     $(document).ready(function() {
       $("input[name='weightb[]']").keyup((val) => {
@@ -2110,54 +2042,168 @@ $conn->close();
   </script>
   <script>
     $(document).ready(function() {
-      function addField(id) {
-        for (i = 1; i <= id; i++) {
-          $("#boxDesc").append(
-            `<div class="col-lg-1">
-            <select name="nondg[]" class="form-control form-control-sm" value="0" tabindex="-1">
-              <option value="0">Normal
-              </option>
-              <option value="1">NonDG
-              </option>
-            </select>
-          </div>
-          <div class="col-lg-1">
-            <input type="number" name="box_no[]" placeholder="Box No" class="form-control form-control-sm" value="1" required="">
-          </div>
-          <div class="col-lg-3">
-            <div class="form-group" id="the-basics">
-              <input class="typeahead form-control form-control-sm" type="text" name="product_name[]" placeholder="Product Name" autocomplete="off" required="">
+      function addField(latestId) {
+        $("#boxDesc").append(
+          `
+            <div class="multi-field row form-group" data-id="${latestId}">
+              <div class="col-lg-1">
+                <select
+                  name="nondg[]"
+                  class="form-control form-control-sm"
+                  value="0"
+                  tabindex="-1"
+                >
+                  <option value="0">Normal</option>
+                  <option value="1">NonDG</option>
+                </select>
+              </div>
+              <div class="col-lg-1">
+                <input
+                  type="number"
+                  name="box_no[]"
+                  placeholder="Box No"
+                  class="form-control form-control-sm"
+                  value="1"
+                  required=""
+                />
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group" id="the-basics">
+                  <input
+                    class="typeahead form-control form-control-sm"
+                    type="text"
+                    name="product_name[]"
+                    placeholder="Product Name"
+                    autocomplete="off"
+                    required=""
+                  />
+                </div>
+              </div>
+              <div class="mb-md hidden-lg hidden-xl"></div>
+              <div class="col-lg-1">
+                <input
+                  type="number"
+                  name="product_quantity[]"
+                  placeholder="Quantity"
+                  class="form-control form-control-sm"
+                  required=""
+                />
+              </div>
+              <div class="mb-md hidden-lg hidden-xl"></div>
+              <div class="col-lg-2">
+                <input
+                  type="text"
+                  name="price[]"
+                  placeholder="Price"
+                  class="form-control form-control-sm"
+                  required=""
+                />
+              </div>
+              <div class="col-lg-2">
+                <input
+                  type="number"
+                  name="hsn_code[]"
+                  placeholder="HSN Code"
+                  tabindex="-1"
+                  class="form-control form-control-sm"
+                />
+              </div>
+              <div class="col-lg-1">
+                <input
+                  type="text"
+                  name="total_price[]"
+                  placeholder="Total Price"
+                  class="form-control form-control-sm"
+                  readonly
+                />
+              </div>
+              <div class="mb-md hidden-lg hidden-xl"></div>
+              <div class="col-lg-1" style="text-align: center">
+                <button
+                  class="remove-field btn btn-outline-danger btn-circle btn-sm"
+                  type="button"
+                  data-toggle="tooltip"
+                  data-placement="right"
+                  title=""
+                  data-original-title="Remove"
+                  data-id="${latestId}"
+                  id="removeBtn"
+                >
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="mb-md hidden-lg hidden-xl">
-          </div>
-          <div class="col-lg-1">
-            <input type="number" name="product_quantity[]" placeholder="Quantity" class="form-control form-control-sm" required="">
-          </div>
-          <div class="mb-md hidden-lg hidden-xl">
-          </div>
-          <div class="col-lg-2">
-            <input type="text" name="price[]" placeholder="Price" class="form-control form-control-sm" required="">
-          </div>
-          <div class="col-lg-2">
-            <input type="number" name="hsn_code[]" placeholder="HSN Code" tabindex="-1" class="form-control form-control-sm">
-          </div>
-          <div class="col-lg-1">
-            <input type="text" name="total_price[]" placeholder="Total Price" class="form-control form-control-sm" readonly>
-          </div>
-          <div class="mb-md hidden-lg hidden-xl">
-          </div>
-          <div class="col-lg-1" style="text-align: center;">
-            <button class="remove-field btn btn-outline-danger btn-circle btn-sm" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Remove">
-              <i class="fa-solid fa-minus"></i>
-            </button>
-          </div>`
-          );
+          `
+        );
+      };
+
+      function removeField(id) {
+        if ($(`.multi-field`).length !== 1) {
+          $(`.multi-field`).find(`[data-id="${id}"]`).parent().parent().remove();
+          calculateTotal();
+          calculateTotalQuantity();
         }
       }
+
       $("#addBtn").click(() => {
-        addField($("#ibox").html("").length);
-      })
+        addField($(".multi-field").length);
+      });
+
+      $("#boxDesc").on("click", "#removeBtn", function() {
+        const id = $(this).data("id");
+        removeField(id);
+      });
+    })
+  </script>
+  <script>
+    function calculateTotal() {
+      var total = 0;
+      $("input[name='price[]']").each(function(index) {
+        var price = parseFloat($(this).val()) || 0;
+        var quantity = parseFloat($("input[name='product_quantity[]']").eq(index).val()) || 0;
+        var itemTotal = price * quantity;
+        total += itemTotal;
+      });
+      $("#totalPrice").val(total.toFixed(2));
+    }
+
+    function calculateTotalQuantity() {
+      var totalQuantity = 0;
+      $("input[name='product_quantity[]']").each(function() {
+        var quantity = parseFloat($(this).val()) || 0;
+        totalQuantity += quantity;
+      });
+      $("#totalQuantity").val(totalQuantity);
+    }
+
+    function calculateInlineTotal() {
+      var qty = document.getElementsByName('product_quantity[]');
+      var price = document.getElementsByName('price[]');
+      var total = document.getElementsByName('total_price[]');
+
+      for (var i = 0; i < qty.length; i++) {
+        var q = qty[i].value;
+        var p = price[i].value;
+        var t = total[i].value;
+
+        if (!total[i].value) {
+          total[i].value = 0;
+        } else {
+          total[i].value = Math.round(q * p);
+        }
+      }
+
+      calculateTotal();
+      calculateTotalQuantity();
+    };
+
+    $(document).ready(function() {
+      $("#boxDesc").on("keyup", "input[name='product_quantity[]']", function() {
+        calculateInlineTotal();
+      });
+      $("#boxDesc").on("keyup", "input[name='price[]']", function() {
+        calculateInlineTotal();
+      });
     })
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>

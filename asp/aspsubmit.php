@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $co_ph_no1 = $_POST['co_ph_no1'];
   $co_email = $_POST['co_email'];
   $co_attention = $_POST['co_attention'];
-  $co_referance = $_POST['co_referance'];
+  $co_referance = isset($_POST['co_referance']) ? $_POST['co_referance'] : '';
 
   $note = $_POST['note'];
   $awb_show = $_POST['awb_show'];
@@ -171,50 +171,42 @@ VALUES ('$order_id', '$user_name', '$sh_full_name', '$sh_zip_code', '$sh_add1', 
 
     // Redirect to the "allorder.php" page
     header("Location: allorder.php");
-    exit();
+    // exit();
   }
 
+  // // Email addresses where notifications will be sent
+  // $sh_notification_email = "info@laxmipatiinternational.com"; // For sh_email
+  // $co_notification_email = "info@laxmipatiinternational.com"; // For co_email
 
-  // ...
+  // // Send notifications to the email addresses
+  // $subject = "Notification for sh_email";
+  // $message = "Your Courier is Booked  $sh_full_name.";
+  // $headers = "From: info@laxmipatiinternational.com";
 
+  // if (mail($sh_notification_email, $subject, $message, $headers)) {
+  //   echo "Notification email for sh_email sent successfully!";
+  // } else {
+  //   echo "Notification email for sh_email could not be sent.";
+  // }
 
+  // $subject = "Notification for co_email";
+  // $message = "Your Courier is Booked $co_full_name.";
 
-  // ...
-
-
-  // Email addresses where notifications will be sent
-  $sh_notification_email = "info@laxmipatiinternational.com"; // For sh_email
-  $co_notification_email = "info@laxmipatiinternational.com"; // For co_email
-
-  // Send notifications to the email addresses
-  $subject = "Notification for sh_email";
-  $message = "Your Courier is Booked  $sh_full_name.";
-  $headers = "From: info@laxmipatiinternational.com";
-
-  if (mail($sh_notification_email, $subject, $message, $headers)) {
-    echo "Notification email for sh_email sent successfully!";
-  } else {
-    echo "Notification email for sh_email could not be sent.";
-  }
-
-  $subject = "Notification for co_email";
-  $message = "Your Courier is Booked $co_full_name.";
-
-  if (mail($co_notification_email, $subject, $message, $headers)) {
-    echo "Notification email for co_email sent successfully!";
-  } else {
-    echo "Notification email for co_email could not be sent.";
-  }
+  // if (mail($co_notification_email, $subject, $message, $headers)) {
+  //   echo "Notification email for co_email sent successfully!";
+  // } else {
+  //   echo "Notification email for co_email could not be sent.";
+  // }
 }
 
-// Validate if the phone number is not empty
 if (!empty($sh_ph_no)) {
   // Create a WhatsApp link with the phone number
-  $latestId = "LPIC5000<?php echo $latestId; ?>";
-  $whatsappLink = "https://api.whatsapp.com/send?phone=" + $sh_ph_no + "&text=Hello,%20Tracking%20ID%20is%20" + $latestId;
+  $latestId = "LPIC5000" . $latestId;
+  $whatsappLink = "https://api.whatsapp.com/send?phone=" . $sh_ph_no . "&text=Hello,%20Tracking%20ID%20is%20" . $latestId;
 
   // Open the WhatsApp link in a new tab
   header("Location: $whatsappLink");
+  // echo `<a href="$whatsappLink" target="_blank"></a>`;
 
   // Wait for a short time (adjust the delay if needed)
   sleep(1);
