@@ -195,7 +195,7 @@ if ($result->num_rows == 1) {
       <div class="bottom">
         <ul class="a">
           <li><a href="dashboard.php">Dashboard</a></li>
-          <li><a href="aspform.php">Booking</a></li>
+          <li><a href="aspget_booking.php">Booking</a></li>
           <li><a href="allorder.php">All Booking</a></li>
           <li><a href="calculator.php">Rate Calculator</a></li>
           <li><a href="payment.php">Payment</a></li>
@@ -228,327 +228,327 @@ if ($result->num_rows == 1) {
                   <div class="card-body" data-select2-id="select2-data-5-l0xj">
                     <div class="form-group-attached" data-select2-id="select2-data-4-p6xh">
                       <div class="row clearfix">
-                        <label class="col-md-1 col-sm-3 col-form-label">Shipment Type</label>
-                        <div class="col-md-1 col-sm-3">
-                          <div class="kt-radio-list">
-                            <label class="kt-radio kt-radio--brand">
-                              <input id="yes2" type="radio" name="document_type_id" value="1">
-                              Doc
-                              <span></span>
-                            </label>
-                            <br>
-                            <label class="kt-radio  kt-radio--brand">
-                              <input id="no2" type="radio" name="document_type_id" value="2" checked="checked"> Non Doc
-                              <span></span>
-                            </label>
-                          </div>
-                        </div>
+                        <!-- <label class="col-md-1 col-sm-3 col-form-label">Shipment Type</label> -->
+                        <!-- <div class="col-md-1 col-sm-3">
+    <div class="kt-radio-list"> -->
+                        <!-- <label class="kt-radio kt-radio--brand">
+    <input id="yes2" type="radio" name="document_type_id" value="1">
+    Doc
+    <span></span>
+    </label> -->
+                        <br>
+                        <!-- <label class="kt-radio  kt-radio--brand">
+    <input id="no2" type="radio" name="document_type_id" value="2" checked="checked"> Non Doc
+    <span></span>
+    </label> -->
+                        <!-- </div>
+    </div> -->
 
                         <div class="col-sm-4">
                           <div class="form-group required">
 
                             <select name="country" style="width:100%;height:36px;">
-                              <option value="Afghanistan">AF - Afghanistan</option>
-                              <option value="Aland Island (Finland)">EUR - Aland Island (Finland)</option>
-                              <option value="Albania">AL - Albania</option>
-                              <option value="Algeria">DZ - Algeria</option>
-                              <option value="American Samoa">AS - American Samoa</option>
-                              <option value="Andorra">AD - Andorra</option>
-                              <option value="Angola">AO - Angola</option>
-                              <option value="Anguilla">AI - Anguilla</option>
-                              <option value="Antarctica">AQ - Antarctica</option>
-                              <option value="Antigua">AG - Antigua</option>
-                              <option value="Antigua and Barbuda">ANB - Antigua and Barbuda</option>
-                              <option value="Argentina">AR - Argentina</option>
-                              <option value="Armenia">AM - Armenia</option>
-                              <option value="Armenia">AM - Armenia</option>
-                              <option value="Aruba">AW - Aruba</option>
-                              <option value="Australia">AU - Australia</option>
-                              <option value="Australia BEYOND">AUB - Australia BEYOND</option>
-                              <option value="Austria">AT - Austria</option>
-                              <option value="Azerbaijan">AZ - Azerbaijan</option>
-                              <option value="Bahamas">BS - Bahamas</option>
-                              <option value="Bahrain">BH - Bahrain</option>
-                              <option value="Bangladesh">BD - Bangladesh</option>
-                              <option value="Bangladesh DDP (Duty Paid)">BDD - Bangladesh DDP (Duty Paid)</option>
-                              <option value="Barbados">BB - Barbados</option>
-                              <option value="Belarus">BY - Belarus</option>
-                              <option value="Belgium">BE - Belgium</option>
-                              <option value="Belize">BZ - Belize</option>
-                              <option value="Benin">BJ - Benin</option>
-                              <option value="Bermuda">BM - Bermuda</option>
-                              <option value="Bhutan">BT - Bhutan</option>
-                              <option value="Bolivia">BO - Bolivia</option>
-                              <option value="Bonaire">BQ - Bonaire</option>
-                              <option value="Bosnia">BX - Bosnia</option>
-                              <option value="Bosnia and Herzegovina">BA - Bosnia and Herzegovina</option>
-                              <option value="Botswana">BW - Botswana</option>
-                              <option value="Botswana (Gaborone)">BWG - Botswana (Gaborone)</option>
-                              <option value="Bouvet Island">BV - Bouvet Island</option>
-                              <option value="Brazil">BR - Brazil</option>
-                              <option value="British Indian Ocean Territory">IO - British Indian Ocean Territory</option>
-                              <option value="Brunei">BN - Brunei</option>
-                              <option value="Bulgaria">BG - Bulgaria</option>
-                              <option value="Burkina Faso">BF - Burkina Faso</option>
-                              <option value="Burundi">BI - Burundi</option>
-                              <option value="Cambodia">KH - Cambodia</option>
-                              <option value="Cameroon">CM - Cameroon</option>
-                              <option value="CANADA">CA - CANADA</option>
-                              <option value="Canary Islands">IC - Canary Islands</option>
-                              <option value="Cape Verde">CV - Cape Verde</option>
-                              <option value="Cayman Islands">KY - Cayman Islands</option>
-                              <option value="Central African Republic">CF - Central African Republic</option>
-                              <option value="Chad">TD - Chad</option>
-                              <option value="Channel Island">CHI - Channel Island</option>
-                              <option value="Chile">CL - Chile</option>
-                              <option value="China">CN - China</option>
-                              <option value="China SOUTH">ROC - China SOUTH</option>
-                              <option value="Christmas Island">CX - Christmas Island</option>
-                              <option value="Cocos (Keeling) Islands">CC - Cocos (Keeling) Islands</option>
-                              <option value="Colombia">CO - Colombia</option>
-                              <option value="Comoros">KM - Comoros</option>
-                              <option value="Congo">CG - Congo</option>
-                              <option value="Congo (Brazzaville)">COB - Congo (Brazzaville)</option>
-                              <option value="Cook Islands">CK - Cook Islands</option>
-                              <option value="Costa Rica">CR - Costa Rica</option>
-                              <option value="Cote d'Ivoire">AFR - Cote d'Ivoire</option>
-                              <option value="Croatia">HR - Croatia</option>
-                              <option value="Cuba">CU - Cuba</option>
-                              <option value="Curacao">CW - Curacao</option>
-                              <option value="Cyprus">CY - Cyprus</option>
-                              <option value="Czech Republic">CZ - Czech Republic</option>
-                              <option value="Democratic Republic Of Congo">CD - Democratic Republic Of Congo</option>
-                              <option value="Denmark">DK - Denmark</option>
-                              <option value="Djibouti">DJ - Djibouti</option>
-                              <option value="Dominica">DM - Dominica</option>
-                              <option value="Dominican Republic">DO - Dominican Republic</option>
-                              <option value="East Timor">TP - East Timor</option>
-                              <option value="Ecuador">EC - Ecuador</option>
-                              <option value="Egypt">EG - Egypt</option>
-                              <option value="El Salvador">SV - El Salvador</option>
-                              <option value="Eritrea">ER - Eritrea</option>
-                              <option value="Estonia">EE - Estonia</option>
-                              <option value="Ethiopia">ET - Ethiopia</option>
-                              <option value="Faeroe Islands">- Faeroe Islands</option>
-                              <option value="Falkland Islands">FK - Falkland Islands</option>
-                              <option value="Faroe Islands">FO - Faroe Islands</option>
-                              <option value="Fiji">FJ - Fiji</option>
-                              <option value="Finland">FI - Finland</option>
-                              <option value="France">FR - France</option>
-                              <option value="French Guiana">GF - French Guiana</option>
-                              <option value="French Polynesia">PF - French Polynesia</option>
-                              <option value="French Southern Territories">TF - French Southern Territories</option>
-                              <option value="Gabon">GA - Gabon</option>
-                              <option value="Gambia">GM - Gambia</option>
-                              <option value="Georgia">GE - Georgia</option>
-                              <option value="Germany">DE - Germany</option>
-                              <option value="Ghana">GH - Ghana</option>
-                              <option value="Gibraltar">GI - Gibraltar</option>
-                              <option value="Greece">GR - Greece</option>
-                              <option value="Greenland">GL - Greenland</option>
-                              <option value="Grenada">GD - Grenada</option>
-                              <option value="Guadeloupe">GP - Guadeloupe</option>
-                              <option value="Guam">GU - Guam</option>
-                              <option value="Guatemala">GT - Guatemala</option>
-                              <option value="Guernsey">GG - Guernsey</option>
-                              <option value="Guinea">GN - Guinea</option>
-                              <option value="Guinea Bissau">GW - Guinea Bissau</option>
-                              <option value="Guinea Equatorial">GQ - Guinea Equatorial</option>
-                              <option value="Guyana">GY - Guyana</option>
-                              <option value="Haiti">HT - Haiti</option>
-                              <option value="Heard and McDonald Islands">HM - Heard and McDonald Islands</option>
-                              <option value="Honduras">HN - Honduras</option>
-                              <option value="Hong Kong">HK - Hong Kong</option>
-                              <option value="Hungary">HU - Hungary</option>
-                              <option value="Iceland">IS - Iceland</option>
-                              <option value="India">IN - India</option>
-                              <option value="Indonesia">ID - Indonesia</option>
-                              <option value="Iran">IR - Iran</option>
-                              <option value="Iraq">IQ - Iraq</option>
-                              <option value="Ireland">IE - Ireland</option>
-                              <option value="Isle of Wight">Isl - Isle of Wight</option>
-                              <option value="Israel">IL - Israel</option>
-                              <option value="Italy">IT - Italy</option>
-                              <option value="Ivory Coast">CI - Ivory Coast</option>
-                              <option value="Jamaica">JM - Jamaica</option>
-                              <option value="Japan">JP - Japan</option>
-                              <option value="Jersey">XJ - Jersey</option>
-                              <option value="Jordan">JO - Jordan</option>
-                              <option value="Kazakhstan">KZ - Kazakhstan</option>
-                              <option value="Kenya">KE - Kenya</option>
-                              <option value="Kenya DDP (Duty Paid)">KED - Kenya DDP (Duty Paid)</option>
-                              <option value="Kiribati">KI - Kiribati</option>
-                              <option value="Kosovo">XK - Kosovo</option>
-                              <option value="Kuwait">KW - Kuwait</option>
-                              <option value="Kyrgyzstan">KG - Kyrgyzstan</option>
-                              <option value="Lagos">NGL - Lagos</option>
-                              <option value="Laos">LA - Laos</option>
-                              <option value="Latvia">LV - Latvia</option>
-                              <option value="Lebanon">LB - Lebanon</option>
-                              <option value="Lesotho">LS - Lesotho</option>
-                              <option value="Lesotho (Maseru)">LSM - Lesotho (Maseru)</option>
-                              <option value="Liberia">LR - Liberia</option>
-                              <option value="Libya">LY - Libya</option>
-                              <option value="Liechtenstein">LI - Liechtenstein</option>
-                              <option value="Lithuania">LT - Lithuania</option>
-                              <option value="Luxembourg">LU - Luxembourg</option>
-                              <option value="Macau">MO - Macau</option>
-                              <option value="Macedonia">MK - Macedonia</option>
-                              <option value="Madagascar">MG - Madagascar</option>
-                              <option value="Malawi">MW - Malawi</option>
-                              <option value="Malawi (Lilongwe)">MWL - Malawi (Lilongwe)</option>
-                              <option value="Malaysia">MY - Malaysia</option>
-                              <option value="Maldives">MV - Maldives</option>
-                              <option value="Mali">ML - Mali</option>
-                              <option value="Malta">MT - Malta</option>
-                              <option value="Marshall Islands">MH - Marshall Islands</option>
-                              <option value="Martinique">MQ - Martinique</option>
-                              <option value="Mauritania">MR - Mauritania</option>
-                              <option value="Mauritius">MU - Mauritius</option>
-                              <option value="Mayotte">YT - Mayotte</option>
-                              <option value="Melilla">- Melilla</option>
-                              <option value="Mexico">MX - Mexico</option>
-                              <option value="Micronesia">FM - Micronesia</option>
-                              <option value="Moldova">MD - Moldova</option>
-                              <option value="Monaco">MC - Monaco</option>
-                              <option value="Mongolia">MN - Mongolia</option>
-                              <option value="Montenegro, Republic of">ME - Montenegro, Republic of</option>
-                              <option value="Montserrat">MS - Montserrat</option>
-                              <option value="Morocco">MA - Morocco</option>
-                              <option value="Mozambique">MZ - Mozambique</option>
-                              <option value="Mozambique (Maputo)">MZM - Mozambique (Maputo)</option>
-                              <option value="Myanmar">MM - Myanmar</option>
-                              <option value="Namibia">NA - Namibia</option>
-                              <option value="Namibia (Windhoek)">NAW - Namibia (Windhoek)</option>
-                              <option value="Nauru">NR - Nauru</option>
-                              <option value="Nepal">NP - Nepal</option>
-                              <option value="Netherlands">NL - Netherlands</option>
-                              <option value="Netherlands (Holland)">NEH - Netherlands (Holland)</option>
-                              <option value="Netherlands Antilles">AN - Netherlands Antilles</option>
-                              <option value="NEVIS">XN - NEVIS</option>
-                              <option value="Nevis">KN - Nevis</option>
-                              <option value="New Caledonia">NC - New Caledonia</option>
-                              <option value="New Zealand">NZ - New Zealand</option>
-                              <option value="Nicaragua">NI - Nicaragua</option>
-                              <option value="Niger">NE - Niger</option>
-                              <option value="Nigeria">NG - Nigeria</option>
-                              <option value="Nigeria - Lagos">NGL - Nigeria - Lagos</option>
-                              <option value="Nigeria - Lagos (Duty Paid)">NGD - Nigeria - Lagos (Duty Paid)</option>
-                              <option value="Niue">NU - Niue</option>
-                              <option value="Norfolk Island">NF - Norfolk Island</option>
-                              <option value="North Korea">KP - North Korea</option>
-                              <option value="Northern Ireland">NIR - Northern Ireland</option>
-                              <option value="Norway">NO - Norway</option>
-                              <option value="NY / NJ - United States Of America">USA - NY / NJ - United States Of America</option>
-                              <option value="Oman">OM - Oman</option>
-                              <option value="Pakistan">PK - Pakistan</option>
-                              <option value="Palau">PW - Palau</option>
-                              <option value="Palestine Authority">PS - Palestine Authority</option>
-                              <option value="Panama">PA - Panama</option>
-                              <option value="Papua new Guinea">PG - Papua new Guinea</option>
-                              <option value="Paraguay">PY - Paraguay</option>
-                              <option value="Peru">PE - Peru</option>
-                              <option value="Philippines">PH - Philippines</option>
-                              <option value="Pitcairn Island">PN - Pitcairn Island</option>
-                              <option value="Poland">PL - Poland</option>
-                              <option value="Portugal">PT - Portugal</option>
-                              <option value="Puerto Rico">PR - Puerto Rico</option>
-                              <option value="Qatar">QA - Qatar</option>
-                              <option value="REST OF WORLD">ROW - REST OF WORLD</option>
-                              <option value="Reunion Island">RE - Reunion Island</option>
-                              <option value="Romania">RO - Romania</option>
-                              <option value="Russia">RU - Russia</option>
-                              <option value="RUWI">RUB - RUWI</option>
-                              <option value="Rwanda">RW - Rwanda</option>
-                              <option value="Saint Pierre and Miquelon">PM - Saint Pierre and Miquelon</option>
-                              <option value="Saipan">MP - Saipan</option>
-                              <option value="Samoa">WS - Samoa</option>
-                              <option value="San Marino">SM - San Marino</option>
-                              <option value="Sao Tome and Principe">ST - Sao Tome and Principe</option>
-                              <option value="Saudi Arabia">SA - Saudi Arabia</option>
-                              <option value="Scotland">SCT - Scotland</option>
-                              <option value="Senegal">SN - Senegal</option>
-                              <option value="Serbia">RS - Serbia</option>
-                              <option value="Seychelles">SC - Seychelles</option>
-                              <option value="Sierra Leone">SL - Sierra Leone</option>
-                              <option value="Singapore">SG - Singapore</option>
-                              <option value="Slovakia">SK - Slovakia</option>
-                              <option value="Slovenia">SI - Slovenia</option>
-                              <option value="Smaller Territories of the UK">XG - Smaller Territories of the UK</option>
-                              <option value="Solomon Islands">SB - Solomon Islands</option>
-                              <option value="Somalia">SO - Somalia</option>
-                              <option value="Somaliland">SML - Somaliland</option>
-                              <option value="South Africa">ZA - South Africa</option>
-                              <option value="South Africa - DDP">ZAD - South Africa - DDP</option>
-                              <option value="South Korea">KR - South Korea</option>
-                              <option value="South Sudan">SS - South Sudan</option>
-                              <option value="Spain">ES - Spain</option>
-                              <option value="Sri Lanka">LK - Sri Lanka</option>
-                              <option value="Sri Lanka DDP (Duty Paid)">LKD - Sri Lanka DDP (Duty Paid)</option>
-                              <option value="St. Barthelemy">XY - St. Barthelemy</option>
-                              <option value="St. Eustatius">XE - St. Eustatius</option>
-                              <option value="St. Helena">SH - St. Helena</option>
-                              <option value="St. Kitts And Nevis">KN - St. Kitts And Nevis</option>
-                              <option value="St. Lucia">LC - St. Lucia</option>
-                              <option value="St. Maarten">SX - St. Maarten</option>
-                              <option value="St. Vincen">VC - St. Vincent</option>
-                              <option value="Sudan">SD - Sudan</option>
-                              <option value="Suriname">SR - Suriname</option>
-                              <option value="Svalbard And Jan Mayen Islands">SJ - Svalbard And Jan Mayen Islands</option>
-                              <option value="Swaziland">SZ - Swaziland</option>
-                              <option value="Swaziland (Mbabane)">SZM - Swaziland (Mbabane)</option>
-                              <option value="Sweden">SE - Sweden</option>
-                              <option value="Switzerland">CH - Switzerland</option>
-                              <option value="Syria">SY - Syria</option>
-                              <option value="Tahiti">PF - Tahiti</option>
-                              <option value="Taiwan">TW - Taiwan</option>
-                              <option value="Tajikistan">TJ - Tajikistan</option>
-                              <option value="Tanzania">TZ - Tanzania</option>
-                              <option value="Tanzania (Dar es Salaam)">TZD - Tanzania (Dar es Salaam)</option>
-                              <option value="Thailand">TH - Thailand</option>
-                              <option value="Togo">TG - Togo</option>
-                              <option value="Tokelau">TK - Tokelau</option>
-                              <option value="Tonga">TO - Tonga</option>
-                              <option value="Trinidad Tobago">TT - Trinidad &amp; Tobago</option>
-                              <option value="Tunisia">TN - Tunisia</option>
-                              <option value="Turkey">TR - Turkey</option>
-                              <option value="Turkmenistan">TM - Turkmenistan</option>
-                              <option value="Turks Caicos Islands">TC - Turks &amp; Caicos Islands</option>
-                              <option value="Tuvalu">TV - Tuvalu</option>
-                              <option value="Uganda">UG - Uganda</option>
-                              <option value="Uganda - DDP">UGD - Uganda - DDP</option>
-                              <option value="Ukraine">UA - Ukraine</option>
-                              <option value="United Arab Emirates">AE - United Arab Emirates</option>
-                              <option value="United Arab Emirates (DDP)">AE - United Arab Emirates (DDP)</option>
-                              <option value="United Kingdom">GB - United Kingdom</option>
-                              <option value="United Kingdom DDP (Duty Paid)">GBD - United Kingdom DDP (Duty Paid)</option>
-                              <option value="United States Of America">US - United States Of America</option>
-                              <option value="Uruguay">UY - Uruguay</option>
-                              <option value="Uzbekistan">UZ - Uzbekistan</option>
-                              <option value="Vanuatu">VU - Vanuatu</option>
-                              <option value="Vatican City State (Holy See)">VA - Vatican City State (Holy See)</option>
-                              <option value="Venezuela">VE - Venezuela</option>
-                              <option value="Vietnam">VN - Vietnam</option>
-                              <option value="Virgin Islands (British)">VG - Virgin Islands (British)</option>
-                              <option value="Virgin Islands (United States)">VI - Virgin Islands (United States)</option>
-                              <option value="Wallis And Futuna Islands">WF - Wallis And Futuna Islands</option>
-                              <option value="Western Sahara">EH - Western Sahara</option>
-                              <option value="Yemen">YE - Yemen</option>
-                              <option value="Yugoslavia">YU - Yugoslavia</option>
-                              <option value="Zambia">ZM - Zambia </option>
-                              <option value="Zambia (Lusaka)">ZML - Zambia (Lusaka)</option>
-                              <option value="Zimbabwe">ZW - Zimbabwe</option>
+                              <option value="AF">AF - Afghanistan</option>
+                              <option value="EUR">EUR - Aland Island (Finland)</option>
+                              <option value="AL">AL - Albania</option>
+                              <option value="DZ">DZ - Algeria</option>
+                              <option value="AS">AS - American Samoa</option>
+                              <option value="AD">AD - Andorra</option>
+                              <option value="AO">AO - Angola</option>
+                              <option value="AI">AI - Anguilla</option>
+                              <option value="AQ">AQ - Antarctica</option>
+                              <option value="AG">AG - Antigua</option>
+                              <option value="ANB">ANB - Antigua and Barbuda</option>
+                              <option value="AR">AR - Argentina</option>
+                              <option value="AM">AM - Armenia</option>
+                              <option value="AM">AM - Armenia</option>
+                              <option value="AW">AW - Aruba</option>
+                              <option value="AU">AU - Australia</option>
+                              <option value="AUB">AUB - Australia BEYOND</option>
+                              <option value="AT">AT - Austria</option>
+                              <option value="AZ">AZ - Azerbaijan</option>
+                              <option value="BS">BS - Bahamas</option>
+                              <option value="BH">BH - Bahrain</option>
+                              <option value="BD">BD - Bangladesh</option>
+                              <option value="BDD">BDD - Bangladesh DDP (Duty Paid)</option>
+                              <option value="BB">BB - Barbados</option>
+                              <option value="BY">BY - Belarus</option>
+                              <option value="BE">BE - Belgium</option>
+                              <option value="BZ">BZ - Belize</option>
+                              <option value="BJ">BJ - Benin</option>
+                              <option value="BM">BM - Bermuda</option>
+                              <option value="BT">BT - Bhutan</option>
+                              <option value="BO">BO - Bolivia</option>
+                              <option value="BQ">BQ - Bonaire</option>
+                              <option value="BX">BX - Bosnia</option>
+                              <option value="BA">BA - Bosnia and Herzegovina</option>
+                              <option value="BW">BW - Botswana</option>
+                              <option value="BWG">BWG - Botswana (Gaborone)</option>
+                              <option value="BV">BV - Bouvet Island</option>
+                              <option value="BR">BR - Brazil</option>
+                              <option value="IO">IO - British Indian Ocean Territory</option>
+                              <option value="BN">BN - Brunei</option>
+                              <option value="BG">BG - Bulgaria</option>
+                              <option value="BF">BF - Burkina Faso</option>
+                              <option value="BI">BI - Burundi</option>
+                              <option value="KH">KH - Cambodia</option>
+                              <option value="CM">CM - Cameroon</option>
+                              <option value="CA">CA - CANADA</option>
+                              <option value="IC">IC - Canary Islands</option>
+                              <option value="CV">CV - Cape Verde</option>
+                              <option value="KY">KY - Cayman Islands</option>
+                              <option value="CF">CF - Central African Republic</option>
+                              <option value="TD">TD - Chad</option>
+                              <option value="CHI">CHI - Channel Island</option>
+                              <option value="CL">CL - Chile</option>
+                              <option value="CN">CN - China</option>
+                              <option value="ROC">ROC - China SOUTH</option>
+                              <option value="CX">CX - Christmas Island</option>
+                              <option value="CC">CC - Cocos (Keeling) Islands</option>
+                              <option value="CO">CO - Colombia</option>
+                              <option value="KM">KM - Comoros</option>
+                              <option value="CG">CG - Congo</option>
+                              <option value="COB">COB - Congo (Brazzaville)</option>
+                              <option value="CK">CK - Cook Islands</option>
+                              <option value="CR">CR - Costa Rica</option>
+                              <option value="AFR">AFR - Cote d'Ivoire</option>
+                              <option value="HR">HR - Croatia</option>
+                              <option value="CU">CU - Cuba</option>
+                              <option value="CW">CW - Curacao</option>
+                              <option value="CY">CY - Cyprus</option>
+                              <option value="CZ">CZ - Czech Republic</option>
+                              <option value="CD">CD - Democratic Republic Of Congo</option>
+                              <option value="DK">DK - Denmark</option>
+                              <option value="DJ">DJ - Djibouti</option>
+                              <option value="DM">DM - Dominica</option>
+                              <option value="DO">DO - Dominican Republic</option>
+                              <option value="TP">TP - East Timor</option>
+                              <option value="EC">EC - Ecuador</option>
+                              <option value="EG">EG - Egypt</option>
+                              <option value="SV">SV - El Salvador</option>
+                              <option value="ER">ER - Eritrea</option>
+                              <option value="EE">EE - Estonia</option>
+                              <option value="ET">ET - Ethiopia</option>
+                              <!-- <option value="Faeroe Islands">- Faeroe Islands</option> -->
+                              <option value="FK">FK - Falkland Islands</option>
+                              <option value="FO">FO - Faroe Islands</option>
+                              <option value="FJ">FJ - Fiji</option>
+                              <option value="FI">FI - Finland</option>
+                              <option value="FR">FR - France</option>
+                              <option value="GF">GF - French Guiana</option>
+                              <option value="PF">PF - French Polynesia</option>
+                              <option value="TF">TF - French Southern Territories</option>
+                              <option value="GA">GA - Gabon</option>
+                              <option value="GM">GM - Gambia</option>
+                              <option value="GE">GE - Georgia</option>
+                              <option value="DE">DE - Germany</option>
+                              <option value="GH">GH - Ghana</option>
+                              <option value="GI">GI - Gibraltar</option>
+                              <option value="GR">GR - Greece</option>
+                              <option value="GL">GL - Greenland</option>
+                              <option value="GD">GD - Grenada</option>
+                              <option value="GP">GP - Guadeloupe</option>
+                              <option value="GU">GU - Guam</option>
+                              <option value="GT">GT - Guatemala</option>
+                              <option value="GG">GG - Guernsey</option>
+                              <option value="GN">GN - Guinea</option>
+                              <option value="GW">GW - Guinea Bissau</option>
+                              <option value="GQ">GQ - Guinea Equatorial</option>
+                              <option value="GY">GY - Guyana</option>
+                              <option value="HT">HT - Haiti</option>
+                              <option value="HM">HM - Heard and McDonald Islands</option>
+                              <option value="HN">HN - Honduras</option>
+                              <option value="HK">HK - Hong Kong</option>
+                              <option value="HU">HU - Hungary</option>
+                              <option value="IS">IS - Iceland</option>
+                              <option value="IN">IN - India</option>
+                              <option value="ID">ID - Indonesia</option>
+                              <option value="IR">IR - Iran</option>
+                              <option value="IQ">IQ - Iraq</option>
+                              <option value="IE">IE - Ireland</option>
+                              <option value="Isl">Isl - Isle of Wight</option>
+                              <option value="IL">IL - Israel</option>
+                              <option value="IT">IT - Italy</option>
+                              <option value="CI">CI - Ivory Coast</option>
+                              <option value="JM">JM - Jamaica</option>
+                              <option value="JP">JP - Japan</option>
+                              <option value="XJ">XJ - Jersey</option>
+                              <option value="JO">JO - Jordan</option>
+                              <option value="KZ">KZ - Kazakhstan</option>
+                              <option value="KE">KE - Kenya</option>
+                              <option value="KED">KED - Kenya DDP (Duty Paid)</option>
+                              <option value="KI">KI - Kiribati</option>
+                              <option value="XK">XK - Kosovo</option>
+                              <option value="KW">KW - Kuwait</option>
+                              <option value="KG">KG - Kyrgyzstan</option>
+                              <option value="NGL">NGL - Lagos</option>
+                              <option value="LA">LA - Laos</option>
+                              <option value="LV">LV - Latvia</option>
+                              <option value="LB">LB - Lebanon</option>
+                              <option value="LS">LS - Lesotho</option>
+                              <option value="LSM">LSM - Lesotho (Maseru)</option>
+                              <option value="LR">LR - Liberia</option>
+                              <option value="LY">LY - Libya</option>
+                              <option value="LI">LI - Liechtenstein</option>
+                              <option value="LT">LT - Lithuania</option>
+                              <option value="LU">LU - Luxembourg</option>
+                              <option value="MO">MO - Macau</option>
+                              <option value="MK">MK - Macedonia</option>
+                              <option value="MG">MG - Madagascar</option>
+                              <option value="MW">MW - Malawi</option>
+                              <option value="MWL">MWL - Malawi (Lilongwe)</option>
+                              <option value="MY">MY - Malaysia</option>
+                              <option value="MV">MV - Maldives</option>
+                              <option value="ML">ML - Mali</option>
+                              <option value="MT">MT - Malta</option>
+                              <option value="MH">MH - Marshall Islands</option>
+                              <option value="MQ">MQ - Martinique</option>
+                              <option value="MR">MR - Mauritania</option>
+                              <option value="MU">MU - Mauritius</option>
+                              <option value="YT">YT - Mayotte</option>
+                              <!-- <option value="Melilla">- Melilla</option> -->
+                              <option value="MX">MX - Mexico</option>
+                              <option value="FM">FM - Micronesia</option>
+                              <option value="MD">MD - Moldova</option>
+                              <option value="MC">MC - Monaco</option>
+                              <option value="MN">MN - Mongolia</option>
+                              <option value="ME">ME - Montenegro, Republic of</option>
+                              <option value="MS">MS - Montserrat</option>
+                              <option value="MA">MA - Morocco</option>
+                              <option value="MZ">MZ - Mozambique</option>
+                              <option value="MZM">MZM - Mozambique (Maputo)</option>
+                              <option value="MM">MM - Myanmar</option>
+                              <option value="NA">NA - Namibia</option>
+                              <option value="NAW">NAW - Namibia (Windhoek)</option>
+                              <option value="NR">NR - Nauru</option>
+                              <option value="NP">NP - Nepal</option>
+                              <option value="NL">NL - Netherlands</option>
+                              <option value="NEH">NEH - Netherlands (Holland)</option>
+                              <option value="AN">AN - Netherlands Antilles</option>
+                              <option value="XN">XN - NEVIS</option>
+                              <option value="KN">KN - Nevis</option>
+                              <option value="NC">NC - New Caledonia</option>
+                              <option value="NZ">NZ - New Zealand</option>
+                              <option value="NI">NI - Nicaragua</option>
+                              <option value="NE">NE - Niger</option>
+                              <option value="NG">NG - Nigeria</option>
+                              <option value="NGL">NGL - Nigeria - Lagos</option>
+                              <option value="NGD">NGD - Nigeria - Lagos (Duty Paid)</option>
+                              <option value="NU">NU - Niue</option>
+                              <option value="NF">NF - Norfolk Island</option>
+                              <option value="KP">KP - North Korea</option>
+                              <option value="NIR">NIR - Northern Ireland</option>
+                              <option value="NO">NO - Norway</option>
+                              <option value="US">USA - NY / NJ - United States Of America</option>
+                              <option value="OM">OM - Oman</option>
+                              <option value="PK">PK - Pakistan</option>
+                              <option value="PW">PW - Palau</option>
+                              <option value="PS">PS - Palestine Authority</option>
+                              <option value="PA">PA - Panama</option>
+                              <option value="PG">PG - Papua new Guinea</option>
+                              <option value="PY">PY - Paraguay</option>
+                              <option value="PE">PE - Peru</option>
+                              <option value="PH">PH - Philippines</option>
+                              <option value="PN">PN - Pitcairn Island</option>
+                              <option value="PL">PL - Poland</option>
+                              <option value="PT">PT - Portugal</option>
+                              <option value="PR">PR - Puerto Rico</option>
+                              <option value="QA">QA - Qatar</option>
+                              <option value="ROW">ROW - REST OF WORLD</option>
+                              <option value="RE">RE - Reunion Island</option>
+                              <option value="RO">RO - Romania</option>
+                              <option value="RU">RU - Russia</option>
+                              <option value="RUB">RUB - RUWI</option>
+                              <option value="RW">RW - Rwanda</option>
+                              <option value="PM">PM - Saint Pierre and Miquelon</option>
+                              <option value="MP">MP - Saipan</option>
+                              <option value="WS">WS - Samoa</option>
+                              <option value="SM">SM - San Marino</option>
+                              <option value="ST">ST - Sao Tome and Principe</option>
+                              <option value="SA">SA - Saudi Arabia</option>
+                              <option value="SCT">SCT - Scotland</option>
+                              <option value="SN">SN - Senegal</option>
+                              <option value="RS">RS - Serbia</option>
+                              <option value="SC">SC - Seychelles</option>
+                              <option value="SL">SL - Sierra Leone</option>
+                              <option value="SG">SG - Singapore</option>
+                              <option value="SK">SK - Slovakia</option>
+                              <option value="SI">SI - Slovenia</option>
+                              <option value="XG">XG - Smaller Territories of the UK</option>
+                              <option value="SB">SB - Solomon Islands</option>
+                              <option value="SO">SO - Somalia</option>
+                              <option value="SML">SML - Somaliland</option>
+                              <option value="ZA">ZA - South Africa</option>
+                              <option value="ZAD">ZAD - South Africa - DDP</option>
+                              <option value="KR">KR - South Korea</option>
+                              <option value="SS">SS - South Sudan</option>
+                              <option value="ES">ES - Spain</option>
+                              <option value="LK">LK - Sri Lanka</option>
+                              <option value="LKD">LKD - Sri Lanka DDP (Duty Paid)</option>
+                              <option value="XY">XY - St. Barthelemy</option>
+                              <option value="XE">XE - St. Eustatius</option>
+                              <option value="SH">SH - St. Helena</option>
+                              <option value="KN">KN - St. Kitts And Nevis</option>
+                              <option value="LC">LC - St. Lucia</option>
+                              <option value="SX">SX - St. Maarten</option>
+                              <option value="VC">VC - St. Vincent</option>
+                              <option value="SD">SD - Sudan</option>
+                              <option value="SR">SR - Suriname</option>
+                              <option value="SJ">SJ - Svalbard And Jan Mayen Islands</option>
+                              <option value="SZ">SZ - Swaziland</option>
+                              <option value="SZM">SZM - Swaziland (Mbabane)</option>
+                              <option value="SE">SE - Sweden</option>
+                              <option value="CH">CH - Switzerland</option>
+                              <option value="SY">SY - Syria</option>
+                              <option value="PF">PF - Tahiti</option>
+                              <option value="TW">TW - Taiwan</option>
+                              <option value="TJ">TJ - Tajikistan</option>
+                              <option value="TZ">TZ - Tanzania</option>
+                              <option value="TZD">TZD - Tanzania (Dar es Salaam)</option>
+                              <option value="TH">TH - Thailand</option>
+                              <option value="TG">TG - Togo</option>
+                              <option value="TK">TK - Tokelau</option>
+                              <option value="TO">TO - Tonga</option>
+                              <option value="TT">TT - Trinidad &amp; Tobago</option>
+                              <option value="TN">TN - Tunisia</option>
+                              <option value="TR">TR - Turkey</option>
+                              <option value="TM">TM - Turkmenistan</option>
+                              <option value="TC">TC - Turks &amp; Caicos Islands</option>
+                              <option value="TV">TV - Tuvalu</option>
+                              <option value="UG">UG - Uganda</option>
+                              <option value="UGD">UGD - Uganda - DDP</option>
+                              <option value="UA">UA - Ukraine</option>
+                              <option value="AE">AE - United Arab Emirates</option>
+                              <!-- <option value="AE">AE - United Arab Emirates (DDP)</option> -->
+                              <option value="GB">GB - United Kingdom</option>
+                              <option value="GBD">GBD - United Kingdom DDP (Duty Paid)</option>
+                              <option value="US">US - United States Of America</option>
+                              <option value="UY">UY - Uruguay</option>
+                              <option value="UZ">UZ - Uzbekistan</option>
+                              <option value="VU">VU - Vanuatu</option>
+                              <option value="VA">VA - Vatican City State (Holy See)</option>
+                              <option value="VE">VE - Venezuela</option>
+                              <option value="VN">VN - Vietnam</option>
+                              <option value="VG">VG - Virgin Islands (British)</option>
+                              <option value="VI">VI - Virgin Islands (United States)</option>
+                              <option value="WF">WF - Wallis And Futuna Islands</option>
+                              <option value="EH">EH - Western Sahara</option>
+                              <option value="YE">YE - Yemen</option>
+                              <option value="YU">YU - Yugoslavia</option>
+                              <option value="ZM">ZM - Zambia </option>
+                              <option value="ZML">ZML - Zambia (Lusaka)</option>
+                              <option value="ZW">ZW - Zimbabwe</option>
                             </select>
 
                           </div>
                         </div>
 
-                        <div class="col-sm-3">
-                          <div class="form-group required">
-
-                            <input id="weight" type="text" placeholder="Shipment Weight" class="form-control" name="weight" readonly="" required="">
-                          </div>
-                        </div>
+                        <!-- <div class="col-sm-3">
+    <div class="form-group required">
+    
+    <input id="weight" type="text" placeholder="Shipment Weight" class="form-control" name="weight" readonly="" required="">
+    </div>
+    </div> -->
                         <div class="col-sm-3">
                           <div class="form-group ">
 
@@ -559,35 +559,20 @@ if ($result->num_rows == 1) {
                       </div>
                       <div class="row clearfix" id="nobd">
                         <div class="col-2">
-                        </div>
-                        <div class="col-2">
                           <label>No of Pcs</label>
-                          <div class="form-group ">
+                          <div class="form-group">
                             <input type="text" placeholder="No Of Box" class="form-control" value="1" name="nob" id="nob">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label style="font-size: 12px;">Act.Weight(1)</label>
+                            <input name="actual-weight" class="form-control" type="text">
                           </div>
                         </div>
                       </div>
                       <div class="row clearfix" id="nobd1">
-                        <div class="col-2">
-                        </div>
                         <div class="col-10">
-                          <div id="ibox" class="row">
-                            <div class="col-md-3">
-                              <div class="form-group"><label style="font-size: 12px;">Act.Weight(1)</label><input name="weightb[]" class="form-control" type="text"></div>
-                            </div>
-                            <div class="col-md-2 ">
-                              <div class="form-group "><label>Length(1)</label><input name="length[]" class="form-control" type="text"></div>
-                            </div>
-                            <div class="col-md-2 ">
-                              <div class="form-group "><label>Width(1)</label><input name="width[]" class="form-control" type="text"></div>
-                            </div>
-                            <div class="col-md-2 ">
-                              <div class="form-group "><label>Height(1)</label><input name="height[]" class="form-control" type="text"></div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group "><label>Vol. Weight (1)</label><input name="weightv[]" class="form-control form-control" type="text" readonly="" tabindex="-1"></div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -607,6 +592,22 @@ if ($result->num_rows == 1) {
 
                   <div class="card-body" style="padding:10px !important" id="user_rate">
                     <p class="text-center">Please Fill Booking Details</p>
+                    <table class="table" id="result_table" class="display">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Code</th>
+                          <th>Weight</th>
+                          <th>Rate/kg</th>
+                          <th>Amount</th>
+                          <th>IGST</th>
+                          <!-- <th>CGST</th>
+                          <th>SGST</th> -->
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
                   </div>
 
                 </div>
@@ -693,21 +694,63 @@ if ($result->num_rows == 1) {
 
 
           $('#formOrder').submit(function(event) {
+            event.preventDefault();
+            const actualWeight = $('input[name="actual-weight"]').val();
             var radioValue1 = $("input:radio[name=booking_type]:checked").val();
             var ocd1 = $("#order_currier_date").val();
             if (ocd1 == null || ocd1 == "") {
               alert("Please enter Currier Date");
               return false;
             } else {
+              let data = {};
+              $.each(this, function(i, v) {
+                const input = $(v);
+                data[input.attr("name")] = input.val();
+                delete data["undefined"];
+              });
+
+              const formData = new FormData();
+              formData.append('product_code', 'NONDOX');
+              formData.append('destination_code', data?.country);
+              formData.append('booking_date', data?.order_currier_date); // yyyy-mm-dd format
+              formData.append('origin_code', 'IN');
+              formData.append('pcs', data?.nob);
+              formData.append('actual_weight', actualWeight);
+              formData.append('customer_code', '1040');
+              formData.append('username', 'bGF4bWlwYXRpLmludDEyM0BnbWFpbC5jb20=');
+              formData.append('password', 'U0FJTlheI14zMzMyMQ==');
+
               jQuery.ajax({
-                url: 'https://goexbox.com/agent/calculator/getRate',
+                url: 'http://admin.sain.in/docket_api/customer_rate_cals?api_company_id=26',
                 type: 'POST',
-                async: false,
-                data: $(this).serialize(),
-                dataType: "json",
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function(result) {
-                  $("#user_rate").html("");
-                  $("#user_rate").append(result.extra_charges);
+                  const resultData = JSON.parse(result ?? "{}");
+                  var tableBody = $("#result_table tbody");
+                  if (resultData?.data) {
+                    tableBody.empty();
+                    $.each(resultData?.data, function(key, value) {
+                      var row = $("<tr>");
+                      const rateWoGST = value?.per_kg - (value?.per_kg * 18 / 118);
+                      const finalRate = Math.round(rateWoGST + (rateWoGST * 15 / 100));
+                      const totalAmt = Math.round(value?.weight * finalRate);
+                      const igst = Math.round(totalAmt * (18 / 100));
+                      row.append($("<td>").text(value?.id));
+                      row.append($("<td>").text(value?.code));
+                      row.append($("<td>").text(value?.weight));
+                      row.append($("<td>").text(finalRate));
+                      row.append($("<td>").text(totalAmt));
+                      row.append($("<td>").text(igst));
+                      // row.append($("<td>").text(value?.cgst));
+                      // row.append($("<td>").text(value?.sgst));
+                      row.append($("<td>").text(Math.round(value?.total)));
+                      tableBody.append(row);
+                    });
+                  } else {
+                    tableBody.append("<tr><td colSpan='12' align='center'>No Rate Found</td></tr>");
+                  }
                 },
                 error: function(result) {
                   alert(result.responseText);
@@ -715,13 +758,12 @@ if ($result->num_rows == 1) {
               });
             }
             /* } */
-            event.preventDefault();
           });
           $("input[name=document_type_id][value=2]").prop('checked', true).trigger('change');
 
 
           $("#ibox").html("");
-          addField(1);
+          // addField(1);
           $('input[name="weightb[]"]').keyup(function() {
             volumeweight();
           });
@@ -742,7 +784,7 @@ if ($result->num_rows == 1) {
             var v = $(this).val();
             if (v == "")
               v = 1;
-            addField(v);
+            // addField(v);
             $('input[name="weightb[]"]').keyup(function() {
               volumeweight();
             });
@@ -766,7 +808,7 @@ if ($result->num_rows == 1) {
               $("#hr1").hide();
               $("#hr2").hide();
               $("#ibox").html("");
-              addField(1);
+              // addField(1);
               $("input[name='height[]']").val('1');
               $("input[name='width[]']").val('1');
               $("input[name='length[]']").val('1');
@@ -786,7 +828,7 @@ if ($result->num_rows == 1) {
               $("#weight").prop('readonly', true);
               $("#weight").val('');
               $("#ibox").html("");
-              addField(1);
+              // addField(1);
               $('#nob').val(1);
             }
           });
@@ -796,16 +838,15 @@ if ($result->num_rows == 1) {
               $("#ibox").append(
                 '<div class="col-md-3"><div class="form-group"><label style="font-size: 12px;">Act.Weight(' +
                 i +
-                ')</label><input name="weightb[]" class="form-control form-control" type="text"></div></div><div class="col-md-2 "><div class="form-group "><label>Length(' +
-                i +
-                ')</label><input name="length[]" class="form-control form-control" type="text"></div></div><div class="col-md-2 "><div class="form-group "><label>Width(' +
-                i +
-                ')</label><input name="width[]" class="form-control form-control" type="text"></div></div><div class="col-md-2 "><div class="form-group "><label>Height(' +
-                i +
-                ')</label><input name="height[]" class="form-control form-control" type="text"></div></div><div class="col-md-3"><div class="form-group "><label>Vol. Weight (' +
-                i +
-                ')</label><input name="weightv[]" class="form-control form-control" type="text"  readonly tabindex="-1"></div></div>'
-              );
+                ')</label><input name="weightb[]" class="form-control form-control" type="text"></div></div><div class="col-md-2 "><div class="form-group ">')
+              // <input name="length[]" class="form-control form-control" type="text"></div></div><div class="col-md-2 "><div class="form-group "><label>Width(' +
+              // i +
+              // ')</label><input name="width[]" class="form-control form-control" type="text"></div></div><div class="col-md-2 "><div class="form-group "><label>Height(' +
+              // i +
+              // ')</label><input name="height[]" class="form-control form-control" type="text"></div></div><div class="col-md-3"><div class="form-group "><label>Vol. Weight (' +
+              // i +
+              // ')</label><input name="weightv[]" class="form-control form-control" type="text"  readonly tabindex="-1"></div></div>'
+              // );
             }
             $('input[name="weightb[]"]').keyup(function() {
               volumeweight();
@@ -954,6 +995,27 @@ if ($result->num_rows == 1) {
 
       $("form").attr('autocomplete', 'off');
     });
+  </script>
+
+  <script type="text/javascript">
+    function getRate() {
+      $.ajax({
+        url: "https://vfolo.in/LaxmipatiAdmin/courierbooking.php/getfwdCharge/",
+        type: "POST",
+        dataType: "form-data",
+        data: {
+          'company_id': $('#company_id').val(),
+          'weight': $('#weight').val()
+        },
+        success: function(data) {
+          $('#company_extra_charge_forwarding_id').html(data);
+          $('#forwarding_div').show();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert('Error get data from ajax');
+        }
+      });
+    }
   </script>
 
   <div id="pip-toast"></div>
