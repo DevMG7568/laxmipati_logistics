@@ -543,7 +543,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">Address 3</label>
                           <div class="col-sm-9">
-                            <input type="text" id="sh_add3" name="sh_add3" value="" class="form-control form-control-sm" required>
+                            <input type="text" id="sh_add3" name="sh_add3" value="" class="form-control form-control-sm">
                           </div>
                         </div>
                       </div>
@@ -567,7 +567,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">Country</label>
                           <div class="col-sm-9">
-                            <input type="text" id="sh_country" name="sh_country" value="" class="form-control form-control-sm" required>
+                            <input type="text" id="sh_country" name="sh_country" value="INDIA" class="form-control form-control-sm" required>
                           </div>
                         </div>
                       </div>
@@ -591,7 +591,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">Email</label>
                           <div class="col-sm-9">
-                            <input type="email" class="form-control form-control-sm" minlength="5" id="sh_email" value="" name="sh_email" required>
+                            <input type="email" class="form-control form-control-sm" minlength="5" id="sh_email" value="laxmipati.int123@gmail.com" name="sh_email" required>
                           </div>
                         </div>
                       </div>
@@ -754,7 +754,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">Address 3</label>
                           <div class="col-sm-9">
-                            <input type="text" id="co_add3" name="co_add3" value="" class="form-control form-control-sm" required>
+                            <input type="text" id="co_add3" name="co_add3" value="" class="form-control form-control-sm">
                           </div>
                         </div>
                       </div>
@@ -1155,8 +1155,8 @@ $conn->close();
                               <label class="col-sm-3 col-form-label">Currency</label>
                               <div class="col-sm-9">
                                 <select name="currency" id="currency" class="form-control form-control-sm" data-placeholder="Select Company" value="" required="">
-                                  <option value="">Select Currency</option>
-                                  <option value="INR">INR</option>
+                                  <!-- <option value="">Select Currency</option> -->
+                                  <option value="INR" selected>INR</option>
                                   <option value="USD">USD</option>
                                   <option value="GBP">GBP</option>
                                   <option value="EUR">EUR</option>
@@ -1169,8 +1169,8 @@ $conn->close();
                               </div>
                               <div class="col-sm-9">
                                 <select name="status" id="status" class="form-control form-control-sm" value="" required="">
-                                  <option value="">Select Status</option>
-                                  <option value="BOOKED">BOOKED</option>
+                                  <!-- <option value="">Select Status</option> -->
+                                  <option value="BOOKED" selected>BOOKED</option>
                                   <option value="IN TRANSIT">IN TRANSIT</option>
                                   <option value="ON HOLD">ON HOLD</option>
                                   <option value="OUT FOR DELIVERY">OUT FOR DELIVERY</option>
@@ -1636,7 +1636,7 @@ $conn->close();
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group ">
-                              <input class="form-control form-control-sm" placeholder="Courier Date" name="order_currier_date" type="date">
+                              <input class="form-control form-control-sm" name="order_currier_date" id="dateInputBooking" type="date">
                             </div>
                           </div>
                         </div>
@@ -1681,6 +1681,7 @@ $conn->close();
       var todayString = yyyy + '-' + mm + '-' + dd;
 
       document.getElementById('dateInput').value = todayString;
+      document.getElementById('dateInputBooking').value = todayString;
     }
 
     // Call the function to set today's date when the page loads

@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $sh_zip_code = $_POST['sh_zip_code'];
   $sh_add1 = $_POST['sh_add1'];
   $sh_add2 = $_POST['sh_add2'];
-  $sh_add3 = $_POST['sh_add3'];
+  $sh_add3 = isset($_POST['sh_add3']) ? $_POST['sh_add3'] : '';
   $sh_city = $_POST['sh_city'];
   $sh_state = $_POST['sh_state'];
   $sh_country = $_POST['sh_country'];
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $co_zip_code = $_POST['co_zip_code'];
   $co_add1 = $_POST['co_add1'];
   $co_add2 = $_POST['co_add2'];
-  $co_add3 = $_POST['co_add3'];
+  $sh_add3 = isset($_POST['co_add3']) ? $_POST['co_add3'] : '';
   $co_city = $_POST['co_city'];
   $co_state = $_POST['co_state'];
   $co_country = $_POST['co_country'];
@@ -201,8 +201,8 @@ VALUES ('$order_id', '$user_name', '$sh_full_name', '$sh_zip_code', '$sh_add1', 
 
 if (!empty($sh_ph_no)) {
   // Create a WhatsApp link with the phone number
-  $latestId = "LPIC5000" . $latestId;
-  $whatsappLink = "https://api.whatsapp.com/send?phone=" . $sh_ph_no . "&text=Hello,%20Tracking%20ID%20is%20" . $latestId;
+  $finalId = "LP5000" . $latestId;
+  $whatsappLink = "https://api.whatsapp.com/send?phone=" . $sh_ph_no . "&text=Hello,%20Tracking%20ID%20is%20" . $finalId . "%20Track%20here,%20https://www.laxmipatiinternational.com/track.php?id=$finalId";
 
   // Open the WhatsApp link in a new tab
   header("Location: $whatsappLink");
