@@ -597,6 +597,14 @@ $conn->close();
                       </div>
                       <div class="form-group">
                         <div class="row">
+                          <label class="col-sm-3 col-form-label">GST No</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-sm" minlength="5" id="sh_gst" value="" name="sh_gst">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
                           <label class="col-sm-3 col-form-label">Attention</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control form-control-sm" id="sh_attention" value="" name="sh_attention">

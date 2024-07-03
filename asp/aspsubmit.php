@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $sh_ph_no = $_POST['sh_ph_no'];
   $sh_ph_no1 = $_POST['sh_ph_no1'];
   $sh_email = $_POST['sh_email'];
+  $sh_gst = $_POST['sh_gst'];
   $sh_attention = $_POST['sh_attention'];
   $sh_referance = $_POST['sh_referance'];
   $sh_document_type = $_POST['sh_document_type'];
@@ -151,8 +152,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
   // File uploaded successfully, insert the file name into the database
-  $sql = "INSERT INTO order_details (order_id, user_name, sh_full_name, sh_zip_code, sh_add1, sh_add2, sh_add3, sh_city, sh_state, sh_country, sh_ph_no, sh_ph_no1, sh_email, sh_attention, sh_referance, sh_document_type, sh_pan_no, documentImage, documentImage_back, sh_document_type1, sh_pan_no1, documentImage1, co_full_name, co_zip_code, co_add1, co_add2, co_add3, co_city, co_state, co_country, co_ph_no, co_ph_no1, co_email, co_attention, co_referance, note, awb_show, gift_type, currency, status, invoice_no_date, adate, totalprice, totalquantity)
-VALUES ('$order_id', '$user_name', '$sh_full_name', '$sh_zip_code', '$sh_add1', '$sh_add2', '$sh_add3', '$sh_city', '$sh_state', '$sh_country', '$sh_ph_no', '$sh_ph_no1', '$sh_email', '$sh_attention', '$sh_referance', '$sh_document_type', '$sh_pan_no', '$documentImage', '$documentImageBack', '$sh_document_type1', '$sh_pan_no1', '$documentImage1', '$co_full_name', '$co_zip_code', '$co_add1', '$co_add2', '$co_add3', '$co_city', '$co_state', '$co_country', '$co_ph_no', '$co_ph_no1', '$co_email', '$co_attention', '$co_referance', '$note', '$awb_show', '$gift_type', '$currency', '$status', '$invoice_no_date', '$adate', '$totalprice', '$totalquantity')";
+  $sql = "INSERT INTO order_details (order_id, user_name, sh_full_name, sh_zip_code, sh_add1, sh_add2, sh_add3, sh_city, sh_state, sh_country, sh_ph_no, sh_ph_no1, sh_email, sh_gst, sh_attention, sh_referance, sh_document_type, sh_pan_no, documentImage, documentImage_back, sh_document_type1, sh_pan_no1, documentImage1, co_full_name, co_zip_code, co_add1, co_add2, co_add3, co_city, co_state, co_country, co_ph_no, co_ph_no1, co_email, co_attention, co_referance, note, awb_show, gift_type, currency, status, invoice_no_date, adate, totalprice, totalquantity)
+VALUES ('$order_id', '$user_name', '$sh_full_name', '$sh_zip_code', '$sh_add1', '$sh_add2', '$sh_add3', '$sh_city', '$sh_state', '$sh_country', '$sh_ph_no', '$sh_ph_no1', '$sh_email', '$sh_gst', '$sh_attention', '$sh_referance', '$sh_document_type', '$sh_pan_no', '$documentImage', '$documentImageBack', '$sh_document_type1', '$sh_pan_no1', '$documentImage1', '$co_full_name', '$co_zip_code', '$co_add1', '$co_add2', '$co_add3', '$co_city', '$co_state', '$co_country', '$co_ph_no', '$co_ph_no1', '$co_email', '$co_attention', '$co_referance', '$note', '$awb_show', '$gift_type', '$currency', '$status', '$invoice_no_date', '$adate', '$totalprice', '$totalquantity')";
 
   if ($conn->query($sql) === TRUE) {
     $product_id = $conn->insert_id;

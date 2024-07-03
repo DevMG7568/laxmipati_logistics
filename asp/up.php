@@ -543,6 +543,14 @@ $conn->close();
                       </div>
                       <div class="form-group">
                         <div class="row">
+                          <label class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-sm" minlength="5" id="sh_gst" value="<?php echo $row['sh_gst']; ?>" name="sh_gst">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
                           <label class="col-sm-3 col-form-label">Attention</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control form-control-sm" id="sh_attention" value="<?php echo $row['sh_attention']; ?>" name="sh_attention">
