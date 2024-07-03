@@ -1039,24 +1039,8 @@ function Output($dest='', $name='', $isUTF8=false)
 *                              Protected methods                               *
 *******************************************************************************/
 
-protected function _checkoutput()
-{
-	if(PHP_SAPI!='cli')
-	{
-		if(headers_sent($file,$line))
-			$this->Error("Some data has already been output, can't send PDF file (output started at $file:$line)");
-	}
-	if(ob_get_length())
-	{
-		// The output buffer is not empty
-		if(preg_match('/^(\xEF\xBB\xBF)?\s*$/',ob_get_contents()))
-		{
-			// It contains only a UTF-8 BOM and/or whitespace, let's clean it
-			ob_clean();
-		}
-		else
-			$this->Error("Some data has already been output, can't send PDF file");
-	}
+protected function _checkoutput() {
+	if(PHP_SAPI!='cli') ob_clean();
 }
 
 protected function _getpagesize($size)

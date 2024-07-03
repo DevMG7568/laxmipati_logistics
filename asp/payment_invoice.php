@@ -49,6 +49,7 @@ $sh_country = $row['sh_country'];
 $sh_ph_no = $row['sh_ph_no'];
 $sh_ph_no1 = $row['sh_ph_no1'];
 $sh_email = $row['sh_email'];
+$sh_gst = $row['sh_gst'];
 $sh_attention = $row['sh_attention'];
 $sh_referance = $row['sh_referance'];
 $sh_document_type = $row['sh_document_type'];
@@ -99,7 +100,7 @@ $totalquantity = $row['totalquantity'];
         require("fpdf/fpdf.php");
         class PDF extends FPDF {
             
-            public function __construct($invoice_no_date,$id,$sh_full_name,$co_full_name,$sh_zip_code,$sh_add1,$sh_add2,$sh_add3,$sh_city,$sh_state,$sh_country,$co_zip_code,$co_add1,$co_add2,$co_add3,$co_city,$co_state,$co_country,$sh_ph_no,$co_ph_no,$co_email,$order_id1) {
+            public function __construct($invoice_no_date,$id,$sh_full_name,$co_full_name,$sh_zip_code,$sh_add1,$sh_add2,$sh_add3,$sh_city,$sh_state,$sh_country,$co_zip_code,$co_add1,$co_add2,$co_add3,$co_city,$co_state,$co_country,$sh_ph_no,$co_ph_no,$co_email,$order_id1,$sh_gst,$sh_referance,$note) {
                 parent::__construct('P', 'mm', 'A4');
                 $this->invoice_no_date = $invoice_no_date;
                 $this->id = $id;
@@ -123,207 +124,103 @@ $totalquantity = $row['totalquantity'];
                 $this->co_ph_no = $co_ph_no;
                 $this->co_email = $co_email;
                 $this->order_id1 = $order_id1;
+                $this->sh_gst = $sh_gst;
+                $this->sh_referance = $sh_referance;
+                $this->note = $note;
                     }
             
             function Header() {
                 
                     $this->SetLineWidth(0.2); // Set the border width
-                    $this->Rect(10, 18, 190, 189, 'D');
                 
                     $this->SetFont("Arial", "B", 22);
-
-                    // Output payment details
-                    $this->Cell(190, 8, "LAXMIPATI INTERNATIONAL COURIER", 0, 1, 'C');
+                    $this->Cell(190, 15, "LAXMIPATI INTERNATIONAL COURIER", 0, 1, 'C');
                     
                     $this->SetFont("Arial", "B", 14);
-                    
                     $this->Cell(190,8,"2026 Momai Complex, nr.sahara Darwaja,Surat-395010","TLR",1, 'C');
                     $this->Cell(190,8,"Brance:Bardoli / Ahemdabad / Mumbai / Daman","LR",1, 'C');
                     
                     $this->SetFont("Arial", "B", 12);
-                    
-                    $this->Cell(190,8,"Contact: 7567558310 / 8758068136","LRB",1, 'C');
+                    $this->Cell(190,8,"Contact: 7567558310 / 8758068136","LR",1, 'C');
+                    $this->Cell(190,8,"GST No.: ","LR",1, 'C');
                     
                     $this->SetFont("Arial", "", 9);
-        
-                    $this->Cell(16,6,"DATE:",1,0);
-                    $this->Cell(72, 6, date('d/m/Y', strtotime($this->invoice_no_date)), "TB", 0);
-                    $this->Cell(72,6,"INVOICE","TB",0);
-                    $this->Cell(30,6,"LP".$this->order_id1,1,1,'C');
+                    $this->Cell(16,6,"DATE:","LTR",0);
+                    $this->Cell(72, 6, date('d/m/Y', strtotime($this->invoice_no_date)), "T", 0);
+                    $this->Cell(72,6,"INVOICE","T",0);
+                    $this->Cell(30,6,"LP".$this->order_id1, "LTR",1,'C');
                     
-                    $this->Cell(30,6,"SHIPPERS","LTB",0);
-                    $this->Cell(130,6,"","TB",0);
-                    $this->Cell(30,6,"CONSIGNEE","TBR",1);
+                    $this->Cell(30,6,"SHIPPERS","LT",0);
+                    $this->Cell(130,6,"","T",0);
+                    $this->Cell(30,6,"CONSIGNEE","TR",1);
                     
                     $this->Cell(25,6,"NAME : ","LT",0);
-                    $this->Cell(70,6,$this->sh_full_name,"RT",0);
-                    $this->Cell(25,6,"NAME : ","T",0);
-                    $this->Cell(70,6,$this->co_full_name,"RT",1);
+                    $this->Cell(70,6,$this->sh_full_name,"T",0);
+                    $this->Cell(25,6,"NAME : ","LT",0);
+                    $this->Cell(70,6,$this->co_full_name,"TR",1);
                     
                     $this->Cell(25,6,"ADD : ","L",0);
-                    $this->Cell(70,6,$this->sh_add1,"R",0);
-                    $this->Cell(25,6,"ADD : ","",0);
+                    $this->Cell(70,6,$this->sh_add1,"",0);
+                    $this->Cell(25,6,"ADD : ","L",0);
                     $this->Cell(70,6,$this->co_add1,"R",1);
                     
                     $this->Cell(25,6,"","L",0);
-                    $this->Cell(70,6,$this->sh_add2,"R",0);
-                    $this->Cell(25,6,"","",0);
+                    $this->Cell(70,6,$this->sh_add2,"",0);
+                    $this->Cell(25,6,"","L",0);
                     $this->Cell(70,6,$this->co_add2,"R",1);
                     
                     $this->Cell(25,6,"","L",0);
-                    $this->Cell(70,6,$this->sh_add3,"R",0);
-                    $this->Cell(25,6,"","",0);
+                    $this->Cell(70,6,$this->sh_add3,"",0);
+                    $this->Cell(25,6,"","L",0);
                     $this->Cell(70,6,$this->co_add3,"R",1);
                     
                     $this->Cell(25, 6, "", "L", 0);
-                    $this->Cell(70, 6, $this->sh_city . ', ' . $this->sh_state . ', ' . $this->sh_zip_code, "R", 0);
-                    $this->Cell(25, 6, "", "", 0);
+                    $this->Cell(70, 6, $this->sh_city . ', ' . $this->sh_state . ', ' . $this->sh_zip_code, "", 0);
+                    $this->Cell(25, 6, "", "L", 0);
                     $this->Cell(70, 6, $this->co_city . ', ' . $this->co_state . ', ' . $this->co_zip_code, "R", 1);
                     
                     $this->Cell(25,6,"","L",0);
-                    $this->Cell(70,6,$this->sh_country,"R",0);
-                    $this->Cell(25,6,"","",0);
+                    $this->Cell(70,6,$this->sh_country,"",0);
+                    $this->Cell(25,6,"","L",0);
                     $this->Cell(70,6,$this->co_country,"R",1);
                     
                     $this->Cell(25,6,"CO.NO. : ","L",0);
-                    $this->Cell(70,6,$this->sh_ph_no,"R",0);
-                    $this->Cell(25,6,"CO.NO. : ","",0);
+                    $this->Cell(70,6,$this->sh_ph_no,"",0);
+                    $this->Cell(25,6,"CO.NO. : ","L",0);
                     $this->Cell(70,6,$this->co_ph_no,"R",1);
                     
                     $this->Cell(25,6,"ID NOMBER : ","L",0);
-                    $this->Cell(70,6,"LP".$this->order_id1,"R",0);
-                    $this->Cell(25,6,"EMAI ID : ","",0);
+                    $this->Cell(70,6,"LP".$this->order_id1,"",0);
+                    $this->Cell(25,6,"EMAI ID : ","L",0);
                     $this->Cell(70,6,$this->co_email,"R",1);
                     
-      
+                    $this->Cell(25,6,"GST NO. : ","L",0);
+                    $this->Cell(70,6,$this->sh_gst,"",0);
+                    $this->Cell(25,6,"","L",0);
+                    $this->Cell(70,6,"", "R",1);
                     
-                    $this->Cell(190,6,"UNSOLICITED GIFT FROM INDIVIDUAL TO INDIVIDUAL","TLRB",1,'C');
-                
+                    $this->Cell(25,6,"SERVICE: ","LT",0);
+                    $this->Cell(70,6,$this->note,"T",0);
+                    $this->Cell(25,6,"REF. NO.: ","T",0);
+                    $this->Cell(70,6,$this->sh_referance,"TR",1);
+                    
+                    $this->SetFont("Arial", "B", 14);
+                    $this->Cell(190,15,"UNSOLICITED GIFT FROM INDIVIDUAL TO INDIVIDUAL",1,1,'C');
             }
-            
-        
-
-        
-        
-       
-       
-        
-        
-            
-            
-            //         function Footer() {
-            //       $this->SetY(-90); // Move to the bottom of the page
-                   
-       
-       
-            //       $this->SetFont("Arial", "", 7);
-            //       $this->Cell(190,5,"TERMS AND CONDTIONS:","TLR",1);
-            //       $this->Cell(190,5,"1) PARCEL WILL BE FORWARDED AFTER RECEIVING 100% PAYMENT.","LR",1);
-            //       $this->Cell(190,5,"2) COMPANY SHALL HAVE NO RESPONSIBILITY IN CASE OF ITEMS DELAYED / BROKEN/LOST DUE TO COSTOMS PROCESER.","LR",1);
-            //       $this->Cell(190,5,"3) ADDRESS CORRECTION SURCHAGE 1500/-","LR",1);
-            //       $this->Cell(190,5,"4) 18% GST HAS TO BE PAID COMPULSORILY AS PER GOVERNMENT OF INDIA RULE.","LR",1);
-            //       $this->Cell(190,5,"5) DUTY/DESTINATION SURCHARGES AND LOCAL TAXES TO BE PAY THE RECEIVER.","LR",1);
-            //       $this->Cell(190,5,"6) FOR LOST PARCELS, THE COMPANY WILL REFUND $50 FOR LESS THAN 10KG AND $100 FOR MORE OR THE INVOICE VALUE, WHICHEVER IS LESS,","LR",1);
-            //       $this->Cell(190,5," ALL INCLUSIVE.","LR",1);
-            //       $this->Cell(190,5,"7) THE COMPANY SHALL NOT BE LIABLE FOR ANY PROHIBITED ITEM PLACED IN THE PARCEL.","LR",1);
-            //       $this->Cell(190,5,"8) ONCE YOU BOOK SHIPMENT MEANS YOU AUTOMATICALLY AGREE TO OUR TERMS AND CONDITIONS. MENTIONED ON THIS SHEET AND TERMS SHEET.","LRB",1);
-                   
-                   
-            //       $this->SetFont("Arial", "", 10);
-            //       $this->Cell(160,7,"LAXMIPATI INTERNATIONAL COURIER", "L", 0);
-            //       $this->Cell(30,7,"FOR.:","R",1);
-                   
-            //       $this->Cell(120,7,"","L",0);
-            //       $this->Cell(70,7,"SENDER'S SIGNATURE","R",1, 'C');
-                   
-            //       $this->Cell(120,7,"","L",0);
-            //       $this->Cell(70,7,"","R",1, 'C');
-                   
-            //       $this->Cell(120,10,"AUTHORISED SIGNATORY","LB",0);
-            //       $this->SetFont("Arial", "", 9);
-            //       $this->Cell(70,10,$this->sh_full_name,"RB",1,'C');
-        
-        
-            // }
-            
         }
         
-       $pdf = new PDF($invoice_no_date,$id,$sh_full_name,$co_full_name,$sh_zip_code,$sh_add1,$sh_add2,$sh_add3,$sh_city,$sh_state,$sh_country,$co_zip_code,$co_add1,$co_add2,$co_add3,$co_city,$co_state,$co_country,$sh_ph_no,$co_ph_no,$co_email,$order_id1);
+       $pdf = new PDF($invoice_no_date,$id,$sh_full_name,$co_full_name,$sh_zip_code,$sh_add1,$sh_add2,$sh_add3,$sh_city,$sh_state,$sh_country,$co_zip_code,$co_add1,$co_add2,$co_add3,$co_city,$co_state,$co_country,$sh_ph_no,$co_ph_no,$co_email,$order_id1,$sh_gst,$sh_referance,$note);
        $pdf->AddPage();
-       $pdf->SetFont("Arial", "", 10);
-       
-        // Set font
-        /*$pdf->SetFont("Arial", "B", 22);
-
-        // Output payment details
-        $pdf->Cell(190, 10, "LAXMIPATI INTERNATIONAL COURIER", 0, 1, 'C');
-        
-        $pdf->SetFont("Arial", "B", 14);
-        
-        $pdf->Cell(190,10,"2026 Momai Complex, nr.sahara Darwaja,Surat-395010","TLR",1, 'C');
-        $pdf->Cell(190,10,"Brance:Bardoli / Ahemdabad / Mumbai / Daman","LR",1, 'C');
-        
-        $pdf->SetFont("Arial", "B", 12);
-        
-        $pdf->Cell(190,10,"Contact: 7567558310 / 8758068136","LRB",1, 'C');
-        
-        $pdf->SetFont("Arial", "", 11);
-        
-        $pdf->Cell(16,7,"DATE:",1,0);
-        $pdf->Cell(72,7, date('d/m/Y', strtotime($invoice_no_date)),"TB",0);
-        $pdf->Cell(72,7,"INVOICE","TB",0);
-        $pdf->Cell(30,7,"LP".$id,1,1,'C');
-        
-        $pdf->Cell(30,7,"SHIPPERS","LTB",0);
-        $pdf->Cell(130,7,"","TB",0);
-        $pdf->Cell(30,7,"CONSIGNEE","TBR",1);
-        
-        $pdf->Cell(25,7,"NAME : ","LT",0);
-        $pdf->Cell(70,7,$sh_full_name,"RT",0);
-        $pdf->Cell(25,7,"NAME : ","T",0);
-        $pdf->Cell(70,7,$co_full_name,"RT",1);
-        
-        $pdf->Cell(25,7,"ADD : ","L",0);
-        $pdf->Cell(70,7,$sh_add1,"R",0);
-        $pdf->Cell(25,7,"ADD : ","",0);
-        $pdf->Cell(70,7,$co_add1,"R",1);
-        
-        $pdf->Cell(25,7,"","L",0);
-        $pdf->Cell(70,7,$sh_add2,"R",0);
-        $pdf->Cell(25,7,"","",0);
-        $pdf->Cell(70,7,$co_add2,"R",1);
-        
-        $pdf->Cell(25,7,"","L",0);
-        $pdf->Cell(70,7,$sh_add3,"R",0);
-        $pdf->Cell(25,7,"","",0);
-        $pdf->Cell(70,7,$co_add3,"R",1);
-        
-        $pdf->Cell(25,7,"CO.NO. : ","L",0);
-        $pdf->Cell(70,7,$sh_ph_no,"R",0);
-        $pdf->Cell(25,7,"CO.NO. : ","",0);
-        $pdf->Cell(70,7,$co_ph_no,"R",1);
-        
-        $pdf->Cell(25,7,"ID NOMBER : ","L",0);
-        $pdf->Cell(70,7,"LP".$id,"R",0);
-        $pdf->Cell(25,7,"EMAI ID : ","",0);
-        $pdf->Cell(70,7,$co_email,"R",1);
-        
-        $pdf->Cell(25,7,"","LB",0);
-        $pdf->Cell(70,7,"","RB",0);
-        $pdf->Cell(25,7,"","B",0);
-        $pdf->Cell(70,7,"","RB",1);
-        
-        $pdf->Cell(190,7,"UNSOLICITED GIFT FROM INDIVIDUAL TO INDIVIDUAL","LRB",1,'C');*/
         
         $pdf->SetFont("Arial", "", 8);
         $pdf->Cell(20,7,"BOX NO.","LRB",0);
-        $pdf->Cell(25,7,"VOLUME","LRB",0);
-        $pdf->Cell(24,7,"VOLUME.W.T","LRB",0);
-        $pdf->Cell(24,7,"EXCUAL.W.T","LRB",0);
-        $pdf->Cell(25,7,"CHARGABLE W.T","LRB",0);
-        $pdf->Cell(24,7,"RATE","LRB",0);
-        $pdf->Cell(24,7,"TOTAL","LRB",0);
-        $pdf->Cell(24,7,"EXTRA CH.","LRB",1);
+        $pdf->Cell(25,7,"VOLUME","BR",0);
+        $pdf->Cell(24,7,"VOLUME.W.T","BR",0);
+        $pdf->Cell(24,7,"EXCUAL.W.T","BR",0);
+        $pdf->Cell(25,7,"CHARGABLE W.T","BR",0);
+        $pdf->Cell(24,7,"RATE","BR",0);
+        $pdf->Cell(24,7,"TOTAL","BR",0);
+        $pdf->Cell(24,7,"EXTRA CH.","BR",1);
         
         
         // Retrieve order details using the provided order ID
@@ -369,18 +266,18 @@ if ($result->num_rows > 0) {
         $pdf->SetFont("Arial", "", 8);
         // Generate PDF cells for each box_no
         $pdf->Cell(20, 7, $counter, "LRB", 0);
-        $pdf->Cell(25, 7, $height . "x" . $width . "x" . $length , "LRB", 0);
-        $pdf->Cell(24, 7, $weightv, "LRB", 0);
-        $pdf->Cell(24, 7, $weightb, "LRB", 0);
+        $pdf->Cell(25, 7, $height . "x" . $width . "x" . $length , "BR", 0);
+        $pdf->Cell(24, 7, $weightv, "BR", 0);
+        $pdf->Cell(24, 7, $weightb, "BR", 0);
         // Choose the greater weight between $weightb and $weightv
     $greater_weight = ($weightb > $weightv) ? $weightb : $weightv;
     
-    $pdf->Cell(25, 7, ceil($greater_weight), "LRB", 0); // Print the greater weight
+    $pdf->Cell(25, 7, ceil($greater_weight), "BR", 0); // Print the greater weight
    
-        $pdf->Cell(24, 7, $rate,"LRB",0);
+        $pdf->Cell(24, 7, $rate,"BR",0);
         $weight_total = ceil($greater_weight) * $rate;
-        $pdf->Cell(24, 7, $weight_total, "LRB", 0);
-        $pdf->Cell(24, 7, $extracharge,"LRB",1);
+        $pdf->Cell(24, 7, $weight_total, "BR", 0);
+        $pdf->Cell(24, 7, $extracharge,"BR",1);
 
      $weight_total1 += ceil($greater_weight) * $rate;
      $totalkg += ceil($greater_weight);
@@ -393,75 +290,50 @@ if ($result->num_rows > 0) {
         $pdf->Cell(24,7,"","B",0);
         $pdf->Cell(24,7,"","B",0);
         $pdf->Cell(25,7,"","B",0);
-        $pdf->Cell(25,7,"","B",0);
-        $pdf->Cell(24,7,"TOTAL","LRB",0);
-        $pdf->Cell(24,7,$weight_total1,"LRB",0);
-        $pdf->Cell(24,7,$extracharge,"LRB",1);
+        $pdf->Cell(25,7,"","BR",0);
+        $pdf->Cell(24,7,"TOTAL","BR",0);
+        $pdf->Cell(24,7,$weight_total1,"BR",0);
+        $pdf->Cell(24,7,$extracharge,"BR",1);
         
-       $pdf->SetFont("Arial", "", 12);
-       $pdf->Cell(190, 7, "TOTAL OUT STANDING", "LRB", 1, 'C');
+       $pdf->SetFont("Arial", "B", 14);
+       $pdf->Cell(190, 15, "TOTAL OUTSTANDING", "LBR", 1, 'C');
        
        $pdf->SetFont("Arial", "", 8);
-       $pdf->Cell(18, 7, "TOTAL BOX", "LRB",0);
-       $pdf->Cell(22, 7, "TOTAL K.G", "LRB",0);
-       $pdf->Cell(21, 7, "RATE", "LRB",0);
-       $pdf->Cell(27, 7, "EXTRA CHARGE", "LRB",0);
-       $pdf->Cell(20, 7, "GST", "LRB",0);
-       $pdf->Cell(27, 7, "GRAND TOTAL", "LRB",0);
-       $pdf->Cell(27, 7, "PAID AMOUNT", "LRB",0);
-       $pdf->Cell(28, 7, "PANDING AMOUNT", "LRB",1);
+       $pdf->Cell(18, 7, "TOTAL BOX", "LBR",0);
+       $pdf->Cell(22, 7, "TOTAL K.G", "BR",0);
+       $pdf->Cell(21, 7, "RATE", "BR",0);
+       $pdf->Cell(27, 7, "EXTRA CHARGE", "BR",0);
+       $pdf->Cell(20, 7, "GST", "BR",0);
+       $pdf->Cell(27, 7, "GRAND TOTAL", "BR",0);
+       $pdf->Cell(27, 7, "PAID AMOUNT", "BR",0);
+       $pdf->Cell(28, 7, "PANDING AMOUNT", "BR",1);
        
-        $pdf->SetFont("Arial", "", 8);
-       $pdf->Cell(18, 7, $box_no, "LRB",0);
-       $pdf->Cell(22, 7, $totalkg, "LRB",0);
-       $pdf->Cell(21, 7, $rate, "LRB",0);
-       $pdf->Cell(27, 7, $extracharge, "LRB",0);
-       $pdf->Cell(20, 7, $gst ."%", "LRB",0);
+    $pdf->SetFont("Arial", "", 8);
+       $pdf->Cell(18, 7, $box_no, "LBR",0);
+       $pdf->Cell(22, 7, $totalkg, "BR",0);
+       $pdf->Cell(21, 7, $rate, "BR",0);
+       $pdf->Cell(27, 7, $extracharge, "BR",0);
+       $pdf->Cell(20, 7, $gst ."%", "BR",0);
        $weight_total2 = $weight_total1 + $extracharge;
        $weight_total3 = ($weight_total2 * $gst) / 100;
        $weight_total4 = $weight_total3 + $weight_total2;
-       $pdf->Cell(27, 7, $weight_total4, "LRB",0);
-       $pdf->Cell(27, 7, $apayment, "LRB",0);
+       $pdf->Cell(27, 7, $weight_total4, "BR",0);
+       $pdf->Cell(27, 7, $apayment, "BR",0);
        $weight_paydu = $weight_total4 - $apayment;
-       $pdf->Cell(28, 7, $weight_paydu, "LRB",1);
+       $pdf->Cell(28, 7, $weight_paydu, "BR",1);
        
-       /*$pdf->SetFont("Arial", "", 7);
-       $pdf->Cell(190,5,"TERMS AND CONDTIONS:","LR",1);
-       $pdf->Cell(190,5,"1) SHIPMENTS WILL BE INCREASED AFTER 100% ADVANCE PAYMENT IS RECEIVED","LR",1);
-       $pdf->Cell(190,5,"2) NO CLAIMS FOR SHORT / MISSING ITEMS / LATE DELIVERY / DAMAGED PARCEL AT DESTINATION DUE TO HANDLING OR IMPROPER PACKING","LR",1);
-       $pdf->Cell(190,5,"3) ADDRESS CORRECTION SURCHAGE 1500/-","LR",1);
-       $pdf->Cell(190,5,"4) DUTY / DESTINATION SURCHARGES AND LOCAL TAXES TO BE PAID BY CONSIGNEE.","LR",1);
-       $pdf->Cell(190,5,"5) INCASE OF DELAYS DUE TO NON-PAYMENT OF DUTY BY CONSIGNEE WE SHALL TAKE NO RESPONSIBILITY DUE TO SUCH DELAYS.","LR",1);
-       $pdf->Cell(190,5,"6) LAXMIPATI MAX LIABILITY FOR LOST PARCEL PARCEL UPTO 10 KG - USD 50 AND THEREAFTER MAX USD 100 ONLY INCLUDING FREIGHT.","LR",1);
-       $pdf->Cell(190,5,"7) IF THE PAYMENT IS DUE, THE DAYS RATE WILL BE CHARGED WHEN PAYMENT IS COMPLETED AND THE BOOKING IS MADE","LR",1);
-       $pdf->Cell(190,5,"8) THERE WILL BE NO LIABILITY IF ANYTHING IN THE PARCEL IS DAMAGED OR BROKEN DUE TO OVERDUE PAYMENT.","LR",1);
-       $pdf->Cell(190,5,"9) ONCE YOU BOOK SHIPMENT MEANS YOU AUTOMATICALLY AGREE TO OUR TERMS AND CONDITIONS. MENTIONED ON THIS SHEET AND TERMS SHEET.","LRB",1);
+      
        
        
-       $pdf->SetFont("Arial", "", 10);
-       $pdf->Cell(160,7,"LAXMIPATI INTERNATIONAL COURIER", "L", 0);
-       $pdf->Cell(30,7,"FOR.:","R",1);
-       
-       $pdf->Cell(140,7,"","L",0);
-       $pdf->Cell(50,7,"SENDER'S SIGNATURE","R",1, 'C');
-       
-       $pdf->Cell(140,7,"","L",0);
-       $pdf->Cell(50,7,$sh_full_name,"R",1, 'C');
-       
-        $pdf->Cell(140,10,"AUTHORISED SIGNATORY","LB",0);
-       $pdf->Cell(50,10,"","RB",1);*/
-       
-       
-       
-        $pdf->SetFont("Arial", "", 7);
-                   $pdf->Cell(190,5,"TERMS AND CONDTIONS:","TLR",1);
+                   $pdf->SetFont("Arial", "B", 10);
+                   $pdf->Cell(190,10,"TERMS AND CONDTIONS:","LR",1);
+                   $pdf->SetFont("Arial", "", 7);
                    $pdf->Cell(190,5,"1) PARCEL WILL BE FORWARDED AFTER RECEIVING 100% PAYMENT.","LR",1);
                    $pdf->Cell(190,5,"2) COMPANY SHALL HAVE NO RESPONSIBILITY IN CASE OF ITEMS DELAYED / BROKEN/LOST DUE TO COSTOMS PROCESER.","LR",1);
                    $pdf->Cell(190,5,"3) ADDRESS CORRECTION SURCHAGE 1500/-","LR",1);
                    $pdf->Cell(190,5,"4) 18% GST HAS TO BE PAID COMPULSORILY AS PER GOVERNMENT OF INDIA RULE.","LR",1);
                    $pdf->Cell(190,5,"5) DUTY/DESTINATION SURCHARGES AND LOCAL TAXES TO BE PAY THE RECEIVER.","LR",1);
-                   $pdf->Cell(190,5,"6) FOR LOST PARCELS, THE COMPANY WILL REFUND $50 FOR LESS THAN 10KG AND $100 FOR MORE OR THE INVOICE VALUE, WHICHEVER IS LESS,","LR",1);
-                   $pdf->Cell(190,5," ALL INCLUSIVE.","LR",1);
+                   $pdf->Cell(190,5,"6) FOR LOST PARCELS, THE COMPANY WILL REFUND 5000 RUPEES OR THE INVOICE VALUE, WHICHEVER IS LESS. (ALL INCLUSIVE)","LR",1);
                    $pdf->Cell(190,5,"7) THE COMPANY SHALL NOT BE LIABLE FOR ANY PROHIBITED ITEM PLACED IN THE PARCEL.","LR",1);
                    $pdf->Cell(190,5,"8) ONCE YOU BOOK SHIPMENT MEANS YOU AUTOMATICALLY AGREE TO OUR TERMS AND CONDITIONS. MENTIONED ON THIS SHEET AND TERMS SHEET.","LRB",1);
                    
@@ -478,7 +350,7 @@ if ($result->num_rows > 0) {
                    
                    $pdf->Cell(120,10,"AUTHORISED SIGNATORY","LB",0);
                    $pdf->SetFont("Arial", "", 9);
-                   $pdf->Cell(70,10,$sh_full_name,"RB",1,'C');
+                   $pdf->Cell(70,10,$sh_full_name,"BR",1,'C');
 
         // Output the PDF to the browser
         $pdf->Output();

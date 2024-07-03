@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
   $result1 = $stmt1->get_result();
 
   // Fetch data from the "order_details" table using the provided ID
-  $sql2 = "SELECT sh_full_name, sh_ph_no FROM order_details WHERE id = ?";
+  $sql2 = "SELECT sh_full_name, sh_ph_no, sh_referance, note FROM order_details WHERE id = ?";
   $stmt2 = $conn->prepare($sql2);
   $stmt2->bind_param("i", $id);
   $stmt2->execute();
@@ -63,6 +63,8 @@ if (isset($_GET['id'])) {
   if ($row2 = $result2->fetch_assoc()) {
     $sh_full_name = $row2['sh_full_name'];
     $sh_ph_no = $row2['sh_ph_no'];
+    $sh_ref = $row2['sh_referance'];
+    $note = $row2['note'];
   } else {
     echo "Data not found for the provided ID in the 'order_details' table.";
   }
@@ -246,7 +248,7 @@ $conn->close();
         </div>
         <div class="col-lg-4">
           <div class="mb-3">
-            <label class="form-label">Gross Amount</label>
+            <label class="form-label">Rate</label>
             <input type="text" class="form-control" name="rate" oninput="calculatePayment()">
           </div>
         </div>
@@ -305,7 +307,7 @@ $conn->close();
 
       <div class="mb-3">
         <label class="form-label">Note</label>
-        <textarea class="form-control" placeholder="Leave a comment here" style="height: 100px" name="note"></textarea>
+        <textarea class="form-control" placeholder="Leave a comment here" style="height: 100px" name="note"><?php echo "Service: " . $sh_ref . ",\nReferance No: " . $note ?></textarea>
       </div>
       <button type="submit" class="btn btn-info">Save Payments</button>
     </form>
@@ -336,10 +338,11 @@ $conn->close();
       // Get the values from weight, rate, and extra charge input fields
       var weight = parseFloat(document.getElementById("weight").value);
       var rate = parseFloat(document.getElementsByName("rate")[0].value);
+      var total = weight * rate;
       var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value);
 
       // Calculate the payment amount including the extra charge
-      var amount = (rate + extraCharge) + ((rate + extraCharge) * 18 / 100)
+      var amount = (total + extraCharge) + ((total + extraCharge) * 18 / 100)
 
 
       // Set the calculated amount to the amount input field

@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sh_ph_no = $_POST['sh_ph_no'];
   $sh_ph_no1 = $_POST['sh_ph_no1'];
   $sh_email = $_POST['sh_email'];
+  $sh_gst = $_POST['sh_gst'];
   $sh_attention = $_POST['sh_attention'];
   $sh_referance = $_POST['sh_referance'];
   $sh_document_type = $_POST['sh_document_type'];
@@ -66,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     sh_ph_no = '$sh_ph_no',
                     sh_ph_no1 = '$sh_ph_no1',
                     sh_email = '$sh_email',
+                    sh_gst = '$sh_gst',
                     sh_attention = '$sh_attention',
                     sh_referance = '$sh_referance',
                     sh_document_type = '$sh_document_type',
@@ -543,7 +545,7 @@ $conn->close();
                       </div>
                       <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 col-form-label">Email</label>
+                          <label class="col-sm-3 col-form-label">GST No</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control form-control-sm" minlength="5" id="sh_gst" value="<?php echo $row['sh_gst']; ?>" name="sh_gst">
                           </div>
