@@ -99,8 +99,6 @@ if ($result->num_rows > 0) {
     color: white;
   }
 
-  .dj .rj .bottom {}
-
   .dj .rj .bottom ul.a {
     list-style: none;
     display: block;
@@ -296,8 +294,8 @@ if ($result->num_rows > 0) {
               <td><?php echo $row['status']; ?></td>
               <td>
                 <a href="up.php?id=<?php echo $row['id']; ?>" target="_self"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="productupdate.php?id=<?php echo $row['id']; ?>" target="_blank">Product</a>
-                <a href="addpayment.php?id=<?php echo $row['id']; ?>" target="_blank"><i class="fa-solid fa-cart-shopping" style="margin-left:10px;"></i></a>
+                <a href="productupdate.php?id=<?php echo $row['id']; ?>" target="_self">Product</a>
+                <a href="addpayment.php?id=<?php echo $row['id']; ?>" target="_self"><i class="fa-solid fa-cart-shopping" style="margin-left:10px;"></i></a>
                 <a href="track.php?id=5000<?php echo $row['id']; ?>" target="_blank"><i class="fa-solid fa-location-dot" style="margin-left:10px;"></i></a>
                 <a class='btn btn-danger text-white mt-3' onclick='return confirmDelete()' href='delete.php?id=<?php echo $row["id"]; ?>'>Delete</a>
               </td>
