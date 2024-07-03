@@ -551,9 +551,8 @@ if ($result->num_rows == 1) {
     </div> -->
                         <div class="col-sm-3">
                           <div class="form-group ">
-
-                            <input class="form-control" placeholder="Courier Date" id="order_currier_date" name="order_currier_date" type="date" required="">
-
+                            <!-- <input type="date" id="dateInput" name="order_currier_date" class="form-control form-control-sm"> -->
+                            <input class="form-control" placeholder="Courier Date" name="order_currier_date" id="order_currier_date" type="date" required="">
                           </div>
                         </div>
                       </div>
@@ -617,19 +616,6 @@ if ($result->num_rows == 1) {
           </form>
         </div>
       </div>
-      <script>
-        // Get the current date
-        var currentDate = new Date();
-
-        // Format the date as "YYYY-MM-DD" for the input field
-        var year = currentDate.getFullYear();
-        var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-based
-        var day = currentDate.getDate().toString().padStart(2, '0');
-        var formattedDate = `${year}-${month}-${day}`;
-
-        // Set the input field value to the current date
-        document.getElementById("order_currier_date").value = formattedDate;
-      </script>
       <script type="text/javascript">
         function volumeweight() {
 
@@ -679,14 +665,18 @@ if ($result->num_rows == 1) {
           }
         }
 
-
         $(document).ready(function() {
-          $('#order_currier_date').datepicker({
-            format: "dd-mm-yyyy",
-            language: 'en',
-            autoclose: true,
-            defaultDate: new Date()
-          });
+          function setTodayDate() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+            var yyyy = today.getFullYear();
+
+            var todayString = yyyy + '-' + mm + '-' + dd;
+            document.getElementById('order_currier_date').value = todayString;
+          }
+          setTodayDate();
+
           $("#error").hide();
           $("#user_id").select2();
           $("#user_id").focus();

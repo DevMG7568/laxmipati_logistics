@@ -1999,47 +1999,73 @@ $conn->close();
     })
   </script>
   <script>
+    function addField(id) {
+      for (i = 1; i <= id; ++i) {
+        $("#ibox").append(
+          '<div class="col-sm-3 pad-0"><div class="form-group "><label style="font-size: 12px;">ACT.Weight(' + i +
+          ')</label><input name="weightb[]" class="form-control form-control-sm" type="text" required></div></div><div class="col-sm-2 pad-0"><div class="form-group "><label>Height(' +
+          i +
+          ')</label><input name="height[]" class="form-control form-control-sm" type="text"  required></div></div><div class="col-sm-2 pad-0"><div class="form-group "><label>Width(' +
+          i +
+          ')</label><input name="width[]" class="form-control form-control-sm" type="text" required></div></div><div class="col-sm-2 pad-0"><div class="form-group "><label>Length(' +
+          i +
+          ')</label><input name="length[]" class="form-control form-control-sm" type="text" required></div></div><div class="col-sm-3 pad-0"><div class="form-group "><label>VOL.WEIGHT(' +
+          i +
+          ')</label><input name="weightv[]" class="form-control form-control-sm" type="text"  readonly tabindex="-1"></div></div>'
+        );
+      }
+    }
+
     function calculateWeightV(value) {
-      var weightValue = $("input[name='weightv[]']").val();
       var height = document.getElementsByName('height[]');
       var width = document.getElementsByName('width[]');
       var length = document.getElementsByName('length[]');
       var weightv = document.getElementsByName('weightv[]');
       var weightb = document.getElementsByName('weightb[]');
       var finalWeight = document.getElementsByName('weight');
+      var final = finalWeight.value ?? 0;
 
       for (var i = 0; i < height.length; i++) {
         var h = height[i].value;
         var w = width[i].value;
         var l = length[i].value;
-        var final = finalWeight.value;
+        var cweight = weightv[i].value;
+        var aweight = weightb[i].value;
 
         if (!weightv[i].value) {
           weightv[i].value = 0;
-          final = 0;
         } else {
           weightv[i].value = Math.round((h * w * l / 5000) * 1000) / 1000;
-          final = Math.ceil(Number(Math.round((h * w * l / 5000) * 1000) / 1000) > Number(weightb[i].value) ? Number(weightv[i].value) : Number(weightb[i].value))
+          final = final + Math.ceil(Number(Math.round((h * w * l / 5000) * 1000) / 1000) > Number(weightb[i].value) ? Number(weightv[i].value) : Number(weightb[i].value))
         }
-
         $("#weight").val(final)
       }
+
     }
 
     $(document).ready(function() {
-      $("input[name='weightb[]']").keyup((val) => {
-        calculateWeightV(val.target.value);
-      })
-      $("input[name='height[]']").keyup((val) => {
-        calculateWeightV(val.target.value);
-      })
-      $("input[name='width[]']").keyup((val) => {
-        calculateWeightV(val.target.value);
-      })
-      $("input[name='length[]']").keyup((val) => {
-        calculateWeightV(val.target.value);
-      })
+      $('#nob').on('changed keyup paste', function() {
+        $("#ibox").html("");
+        var v = $(this).val();
+        if (v == "")
+          v = 1;
+        addField(v);
+      });
     })
+    $(document).ready(function() {
+      $("#ibox").on('keyup', $('input[name="weightb[]"]'), function() {
+        calculateWeightV();
+      });
+      $("#ibox").on('keyup', $('input[name="height[]"]'), function() {
+        calculateWeightV();
+      });
+      $("#ibox").on('keyup', $('input[name="length[]"]'), function() {
+        calculateWeightV();
+      });
+      $("#ibox").on('keyup', $('input[name="width[]"]'), function() {
+        calculateWeightV();
+      });
+    });
   </script>
   <script>
     $(document).ready(function() {
@@ -2064,7 +2090,7 @@ $conn->close();
                   name="box_no[]"
                   placeholder="Box No"
                   class="form-control form-control-sm"
-                  value="1"
+                  value="${latestId + 1}"
                   required=""
                 />
               </div>
