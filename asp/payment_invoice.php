@@ -145,7 +145,7 @@ if (isset($_GET['billno'])) {
 
         $this->SetFont("Arial", "B", 12);
         $this->Cell(190, 8, "Contact: 7567558310 / 7567558603", "LR", 1, 'C');
-        $this->Cell(190, 8, "GST No.: ", "LR", 1, 'C');
+        $this->Cell(190, 8, "GST No.: 24AXBPV4894K2ZS", "LR", 1, 'C');
 
         $this->SetFont("Arial", "", 9);
         $this->Cell(16, 6, "DATE:", "LTR", 0);

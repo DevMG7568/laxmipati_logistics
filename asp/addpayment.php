@@ -307,7 +307,7 @@ $conn->close();
 
       <div class="mb-3">
         <label class="form-label">Note</label>
-        <textarea class="form-control" placeholder="Leave a comment here" style="height: 100px" name="note"><?php echo "Service: " . $sh_ref . ",\nReferance No: " . $note ?></textarea>
+        <textarea class="form-control" placeholder="Leave a comment here" style="height: 100px; text-transform: uppercase" name="note"><?php echo "Service: " . $note . "\nReferance No: " . $sh_ref ?></textarea>
       </div>
       <button type="submit" class="btn btn-info">Save Payments</button>
     </form>

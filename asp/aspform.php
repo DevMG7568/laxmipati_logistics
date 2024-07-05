@@ -1250,7 +1250,7 @@ $conn->close();
                             <input type="number" name="hsn_code[]" placeholder="HSN Code" tabindex="-1" class="form-control form-control-sm">
                           </div>
                           <div class="col-lg-1">
-                            <input type="text" name="total_price[]" placeholder="Total Price" class="form-control form-control-sm" readonly>
+                            <input type="text" name="total_price[]" placeholder="Total Price" class="form-control form-control-sm" readonly tabindex="-1">
                           </div>
                           <div class="mb-md hidden-lg hidden-xl">
                           </div>
@@ -1637,16 +1637,16 @@ $conn->close();
                           </div>
                         </div>
                         <div class="row clearfix">
-                          <div class="col-sm-6">
+                          <div class="col-sm-12">
                             <div class="form-group  required">
-                              <input id="weight" type="text" placeholder="Shipment Weight" class="form-control form-control-sm" name="weight" required="" readonly="">
+                              <input id="weight" tabindex="-1" type="text" placeholder="Shipment Weight" class="form-control form-control-sm" name="weight" required="" readonly="">
                             </div>
                           </div>
-                          <div class="col-sm-6">
+                          <!-- <div class="col-sm-6">
                             <div class="form-group ">
-                              <input class="form-control form-control-sm" name="order_currier_date" id="dateInputBooking" type="date">
+                              <input class="form-control form-control-sm" name="order_currier_date" id="dateInputBooking" type="date" disabled>
                             </div>
-                          </div>
+                          </div> -->
                         </div>
                         <div class="row clearfix">
                           <div class="col-sm-6">
@@ -1667,8 +1667,9 @@ $conn->close();
               </div>
               <div class="row">
                 <div class="col-md-6 text-right">
-                  <input type="submit" name="submit" value="Submit">
+                  <input type="button" name="submit" id="submit-button-id" value="Submit">
                 </div>
+                <input type="submit" name="submit" id="submit-button" value="Submit" hidden>
               </div>
             </form>
           </section>
@@ -1689,7 +1690,7 @@ $conn->close();
       var todayString = yyyy + '-' + mm + '-' + dd;
 
       document.getElementById('dateInput').value = todayString;
-      document.getElementById('dateInputBooking').value = todayString;
+      // document.getElementById('dateInputBooking').value = todayString;
     }
 
     // Call the function to set today's date when the page loads
@@ -2077,7 +2078,7 @@ $conn->close();
   </script>
   <script>
     $(document).ready(function() {
-      function addField(latestId) {
+      function addField(latestId, lastBoxValue) {
         $("#boxDesc").append(
           `
             <div class="multi-field row form-group" data-id="${latestId}">
@@ -2098,7 +2099,8 @@ $conn->close();
                   name="box_no[]"
                   placeholder="Box No"
                   class="form-control form-control-sm"
-                  value="${latestId + 1}"
+                  value="${lastBoxValue}"
+                  id="new_row"
                   required=""
                 />
               </div>
@@ -2148,6 +2150,7 @@ $conn->close();
                   type="text"
                   name="total_price[]"
                   placeholder="Total Price"
+                  tabindex="-1"
                   class="form-control form-control-sm"
                   readonly
                 />
@@ -2179,14 +2182,22 @@ $conn->close();
           calculateTotalQuantity();
         }
       }
-
+      
       $("#addBtn").click(() => {
-        addField($(".multi-field").length);
+        const lastBoxValue = $(`#boxDesc`).find(`[data-id="${$(`.multi-field`).length - 1}"]`).find(`[name="box_no[]"]`).val()
+        addField($(".multi-field").length, lastBoxValue);
       });
 
       $("#boxDesc").on("click", "#removeBtn", function() {
         const id = $(this).data("id");
         removeField(id);
+      });
+    })
+    </script>
+  <script>
+    $(document).ready(function() {
+      $("#addBtn").click(() => {
+        $(`#boxDesc`).find(`[data-id="${$(`.multi-field`).length - 1}"]`).find(`#new_row`).focus()
       });
     })
   </script>
@@ -2241,6 +2252,29 @@ $conn->close();
       });
     })
   </script>
+
+  <script>
+    document.getElementById("submit-button-id").addEventListener("click", function(event) {
+      if($("#invoice-form")[0].checkValidity()) {
+        var phoneNumber = document.getElementById("sh_ph_no").value;
+        if (phoneNumber.trim() !== "") {
+          var latestId = "LPIC5000<?php echo $latestId; ?>";
+          var whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=Hello,%20Tracking%20ID%20is%20${latestId}%20Track%20here,%20https://www.laxmipatiinternational.com/track.php?id=${latestId}`;
+          var whatsappWindow = window.open(whatsappLink, '_blank');
+          document.getElementById("submit-button").click(); // Re  place "submit-button-id" with the actual ID of your submit button
+        } else {
+          alert("Please enter a valid phone number.");
+          event.preventDefault(); // Prevent the default form submission
+        }
+      } else {
+        document.getElementById("submit-button").click(); // Re  place "submit-button-id" with the actual ID of your submit button
+      }
+    });
+  </script>
+
+
+
+
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.29/sweetalert2.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>

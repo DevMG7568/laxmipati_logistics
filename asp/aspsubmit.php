@@ -113,6 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $documentImage = $_FILES['documentImage']['name'];
     $documentImageTmp = $_FILES['documentImage']['tmp_name'];
     $documentImagePath = 'upload/' . $documentImage;
+    
     if (move_uploaded_file($documentImageTmp, $documentImagePath)) {
       // Image uploaded successfully
     } else {
@@ -199,25 +200,6 @@ VALUES ('$order_id', '$user_name', '$sh_full_name', '$sh_zip_code', '$sh_add1', 
   //   echo "Notification email for co_email could not be sent.";
   // }
 }
-
-if (!empty($sh_ph_no)) {
-  // Create a WhatsApp link with the phone number
-  $finalId = "LP5000" . $latestId;
-  $whatsappLink = "https://api.whatsapp.com/send?phone=" . $sh_ph_no . "&text=Hello,%20Tracking%20ID%20is%20" . $finalId . "%20Track%20here,%20https://www.laxmipatiinternational.com/track.php?id=$finalId";
-
-  // Open the WhatsApp link in a new tab
-  header("Location: $whatsappLink");
-  // echo `<a href="$whatsappLink" target="_blank"></a>`;
-
-  // Wait for a short time (adjust the delay if needed)
-  sleep(1);
-} else {
-  // Display an alert and prevent form submission
-  echo "<script>alert('Please enter a valid phone number.');</script>";
-  // You can also use JavaScript to prevent form submission if needed
-  echo "<script>event.preventDefault();</script>";
-}
-
 
 
 $conn->close();

@@ -129,9 +129,9 @@ $pdf->SetFont("Arial", "", 10);
 $pdf->Cell(190, 7, "Contact No: +91 7567558310 Website: www.laxmipatiinternational.com Email : info@laxmipatiinternational.com", 0, 1, 'C');
 
 $pdf->SetFont("Arial", "B", 10);
-$pdf->Cell(30, 9, "SERVICE", "TLR", 0, 'C');
-$pdf->Cell(20, 9, "ORIGIN", "T", 0, 'C');
-$pdf->Cell(90, 9, "DESTINATION", "TLR", 0, 'C');
+$pdf->Cell(40, 9, "SERVICE", "TLR", 0, 'C');
+$pdf->Cell(50, 9, "ORIGIN", "T", 0, 'C');
+$pdf->Cell(50, 9, "DESTINATION", "TLR", 0, 'C');
 
 $pdf->SetFont("Arial", "B", 14);
 $pdf->Cell(50, 9, "AIRWAY BILL NO", "TR", 1, 'C');
@@ -148,9 +148,9 @@ $pdf->Cell(50, 9, "AIRWAY BILL NO", "TR", 1, 'C');
 
         
 $pdf->SetFont("Arial", "", 10);
-$pdf->Cell(30, 5, "Laxmipati Express ", "TLR", 0, 'C');
-$pdf->Cell(20, 5, strtoupper($sh_country), "T", 0, 'C');
-$pdf->Cell(90, 5, strtoupper($co_country), "TLR", 0, 'C');
+$pdf->Cell(40, 5, strtoupper($note), "TLR", 0, 'C');
+$pdf->Cell(50, 5, strtoupper($sh_country), "T", 0, 'C');
+$pdf->Cell(50, 5, strtoupper($co_country), "TLR", 0, 'C');
 
 $pdf->SetFont("Arial", "", 16);
 $pdf->Cell(50, 5, "LP".$order_id1, "", 0, 'C');
@@ -275,7 +275,7 @@ $pdf->Cell(50, 5, $height."x".$width."x".$length."( ".$weightv." KG )", "LR", 1)
 
 $pdf->SetFont("Arial", "", 10);
 $pdf->Cell(50, 5, "DATE: " . date('d/m/Y', strtotime($invoice_no_date)), "LRB", 0);
-$pdf->Cell(30, 5, "", "RB", 0);
+$pdf->Cell(30, 5, strtoupper($sh_referance), "RB", 0);
 $pdf->Cell(30, 5, "", "B", 0);
 $pdf->Cell(30, 5, "", "B", 0);
 $pdf->Cell(50, 5, "", "LRB", 1);

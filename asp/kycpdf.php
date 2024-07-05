@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             // Set X and Y coordinates for the image
             $pdf->SetXY(10, 10);
             // Embed image
-            $pdf->Image($imagePath, 10, 10, 190, 0, 'JPEG');
+            $pdf->Image($imagePath, 10, 10, 190, 0, false);
             $imageCount++;
 
             // If it's not the last image, add a new page
