@@ -597,9 +597,9 @@ if ($result->num_rows == 1) {
                           <th>#</th>
                           <th>Code</th>
                           <th>Weight</th>
-                          <th>Rate/kg</th>
+                          <!-- <th>Rate/kg</th> -->
                           <th>Rate (GST)</th>
-                          <th>Amount</th>
+                          <!-- <th>Amount</th> -->
                           <th>IGST</th>
                           <!-- <th>CGST</th>
                           <th>SGST</th> -->
@@ -732,9 +732,9 @@ if ($result->num_rows == 1) {
                       row.append($("<td>").text(value?.id));
                       row.append($("<td>").text(value?.code));
                       row.append($("<td>").text(value?.weight));
-                      row.append($("<td>").text(finalRate));
+                      // row.append($("<td>").text(finalRate));
                       row.append($("<td>").text(finalRateWithGST));
-                      row.append($("<td>").text(totalAmt));
+                      // row.append($("<td>").text(totalAmt));
                       row.append($("<td>").text(igst));
                       // row.append($("<td>").text(value?.cgst));
                       // row.append($("<td>").text(value?.sgst));

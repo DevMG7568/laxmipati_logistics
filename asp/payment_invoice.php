@@ -318,7 +318,7 @@ if (isset($_GET['billno'])) {
     $pdf->Cell(27, 7, $extracharge, "BR", 0);
     $pdf->Cell(20, 7, $gst . "%", "BR", 0);
     $weight_total2 = $weight_total1 + $extracharge;
-    $weight_total3 = ($weight_total2 * $gst) / 100;
+    $weight_total3 = (($extracharge) * $gst) / 100;
     $weight_total4 = $weight_total3 + $weight_total2;
     $pdf->Cell(27, 7, $weight_total4, "BR", 0);
     $pdf->Cell(27, 7, $apayment, "BR", 0);

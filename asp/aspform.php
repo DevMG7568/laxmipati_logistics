@@ -551,7 +551,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">City</label>
                           <div class="col-sm-9">
-                            <input type="text" id="sh_city" name="sh_city" value="" class="autocomplete form-control form-control-sm" autocomplete="off" required>
+                            <input type="text" id="sh_city" name="sh_city" value="SURAT" class="autocomplete form-control form-control-sm" autocomplete="off" required>
                           </div>
                         </div>
                       </div>
@@ -559,7 +559,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">State</label>
                           <div class="col-sm-9">
-                            <input type="text" id="sh_state" name="sh_state" value="" class="form-control form-control-sm" required>
+                            <input type="text" id="sh_state" name="sh_state" value="GUJARAT" class="form-control form-control-sm" required>
                           </div>
                         </div>
                       </div>
