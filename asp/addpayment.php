@@ -342,8 +342,7 @@ $conn->close();
       var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value);
 
       // Calculate the payment amount including the extra charge
-      var amount = (total + extraCharge) + ((total + extraCharge) * 18 / 100)
-
+      var amount = Math.round((total + extraCharge) + (extraCharge * 18 / 100))
 
       // Set the calculated amount to the amount input field
       document.getElementById("amount").value = amount;

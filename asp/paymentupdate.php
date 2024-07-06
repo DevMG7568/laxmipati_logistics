@@ -81,6 +81,7 @@ $conn->close();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Payments | Laxmipati</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -233,7 +234,7 @@ $conn->close();
         <div class="col-lg-4">
           <div class="mb-3">
             <label class="form-label">Total Weight</label>
-            <input type="text" class="form-control" name="weight" id="weight" value="<?php echo $row['weight']; ?>">
+            <input type="text" class="form-control" name="weight" id="weight" value="<?php echo $row['weight']; ?>" oninput="calculatePayment()">
           </div>
         </div>
         <div class="col-lg-4">
@@ -254,7 +255,7 @@ $conn->close();
         <div class="col-lg-4">
           <div class="mb-3">
             <label class="form-label">Payment Amount</label>
-            <input type="text" class="form-control" name="amount" id="amount" value="<?php echo $row['amount']; ?>">
+            <input type="text" class="form-control" name="amount" id="amount" value="<?php echo $row['amount']; ?>" disabled>
           </div>
         </div>
         <div class="col-lg-4">
@@ -322,7 +323,7 @@ $conn->close();
     // 
   </script>
 
-  // <script>
+  <script>
     //         function calculatePayment() {
     //         // Get the values from weight, rate, and extra charge input fields
     // var weight = parseFloat(document.getElementById("weight").value);
@@ -362,17 +363,16 @@ $conn->close();
       var weight = parseFloat(document.getElementById("weight").value);
       var rate = parseFloat(document.getElementsByName("rate")[0].value);
       var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value);
-      var gst = parseFloat(document.getElementById("gst").value);
 
-      // Calculate the payment amount including the extra charge
-      // var amount = (weight * rate) + extraCharge + gst;
-      var amount = (weight * rate) + extraCharge + (gst / 100) * (weight * rate + extraCharge);
-
+      var amount = Math.round(((weight * rate) + extraCharge) + (extraCharge * 18 / 100))
 
       // Set the calculated amount to the amount input field
       document.getElementById("amount").value = amount;
-
     }
+
+    $(document).ready(function() {
+      calculatePayment()
+    })
   </script>
 
 

@@ -262,17 +262,21 @@ if ($result->num_rows > 0) {
       </thead>
       <tbody>
         <?php
-        // $sql = "SELECT order_details.*, get_start.nob, get_start.weight
-        //         FROM order_details
-        //         LEFT JOIN get_start ON order_details.id = get_start.id
-        //         WHERE get_start.user_name = '$admin_username'
-        //         ORDER BY order_details.invoice_no_date DESC";
-        $sql = "SELECT order_details.*, get_start.nob, get_start.weight
-        FROM order_details
-        LEFT JOIN get_start ON order_details.id = get_start.id
-        WHERE get_start.user_name = '$admin_username'
-        ORDER BY order_details.id DESC";
-        $result = $conn->query($sql);
+
+        $sql2 = "";
+        if ($admin_username == "ADMIN (M)") {
+          $sql2 = "SELECT order_details.*, get_start.nob, get_start.weight
+          FROM order_details
+          LEFT JOIN get_start ON order_details.id = get_start.id
+          ORDER BY order_details.id DESC";
+        } else {
+          $sql2 = "SELECT order_details.*, get_start.nob, get_start.weight
+          FROM order_details
+          LEFT JOIN get_start ON order_details.id = get_start.id
+          WHERE get_start.user_name = '$admin_username'
+          ORDER BY order_details.id DESC";
+        }
+        $result = $conn->query($sql2);
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {

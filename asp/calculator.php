@@ -598,6 +598,7 @@ if ($result->num_rows == 1) {
                           <th>Code</th>
                           <th>Weight</th>
                           <th>Rate/kg</th>
+                          <th>Rate (GST)</th>
                           <th>Amount</th>
                           <th>IGST</th>
                           <!-- <th>CGST</th>
@@ -725,12 +726,14 @@ if ($result->num_rows == 1) {
                       var row = $("<tr>");
                       const rateWoGST = value?.per_kg - (value?.per_kg * 18 / 118);
                       const finalRate = Math.round(rateWoGST + (rateWoGST * 15 / 100));
+                      const finalRateWithGST = Math.round(finalRate + (finalRate * 18 / 100));
                       const totalAmt = Math.round(value?.weight * finalRate);
                       const igst = Math.round(totalAmt * (18 / 100));
                       row.append($("<td>").text(value?.id));
                       row.append($("<td>").text(value?.code));
                       row.append($("<td>").text(value?.weight));
                       row.append($("<td>").text(finalRate));
+                      row.append($("<td>").text(finalRateWithGST));
                       row.append($("<td>").text(totalAmt));
                       row.append($("<td>").text(igst));
                       // row.append($("<td>").text(value?.cgst));
