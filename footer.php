@@ -41,7 +41,7 @@
                                     <div class="wrapper-box">
                                         <div class="icon-box">
                                             <div class="icon"><span class="flaticon-calling"></span></div>
-                                            <div class="text"><strong>Phone</strong><a href="tel:<?php echo $setting['phone']; ?>"><?php echo $setting['phone']; ?></a></div>
+                                            <div class="text"><strong>Phone</strong><a href="tel:<?php echo $setting['phone']; ?>">+91 <?php echo $setting['phone']; ?></a></div>
                                         </div>
                                         <div class="icon-box">
                                             <div class="icon"><span class="flaticon-mail"></span></div>
