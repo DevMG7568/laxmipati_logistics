@@ -738,7 +738,7 @@ if ($result->num_rows == 1) {
                       row.append($("<td>").text(igst));
                       // row.append($("<td>").text(value?.cgst));
                       // row.append($("<td>").text(value?.sgst));
-                      row.append($("<td>").text(Math.round(totalAmt + igst)));
+                      row.append($("<td>").text(Math.round(finalRateWithGST * value?.weight)));
                       tableBody.append(row);
                     });
                   } else {
