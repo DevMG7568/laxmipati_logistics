@@ -250,7 +250,6 @@ if (isset($_GET['billno'])) {
     $pdf = new PDF($invoice_no_date, $id, $sh_full_name, $co_full_name, $sh_zip_code, $sh_add1, $sh_add2, $sh_add3, $sh_city, $sh_state, $sh_country, $co_zip_code, $co_add1, $co_add2, $co_add3, $co_city, $co_state, $co_country, $sh_ph_no, $co_ph_no, $co_email, $order_id1, $sh_gst, $sh_referance, $note);
     $pdf->AddPage();
 
-
     $pdf->SetFont("Arial", "B", 14);
     $pdf->Cell(190, 10, "UNSOLICITED GIFT FROM INDIVIDUAL TO INDIVIDUAL", "B", 1, 'C');
 
@@ -347,7 +346,7 @@ if (isset($_GET['billno'])) {
     $pdf->Cell(20, 6, "GST", "BR", 0);
     $pdf->Cell(27, 6, "GRAND TOTAL", "BR", 0);
     $pdf->Cell(27, 6, "PAID AMOUNT", "BR", 0);
-    $pdf->Cell(28, 6, "PANDING AMOUNT", "B", 1);
+    $pdf->Cell(28, 6, "PENDING AMOUNT", "B", 1);
 
     $pdf->SetFont("Arial", "", 8);
     $pdf->Cell(18, 6, $box_no, "BR", 0);
