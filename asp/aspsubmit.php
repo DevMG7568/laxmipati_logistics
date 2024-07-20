@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $documentImage = $_FILES['documentImage']['name'];
     $documentImageTmp = $_FILES['documentImage']['tmp_name'];
     $documentImagePath = 'upload/' . $documentImage;
-    
+
     if (move_uploaded_file($documentImageTmp, $documentImagePath)) {
       // Image uploaded successfully
     } else {
@@ -144,12 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       echo "Error uploading documentImage1.";
     }
   }
-
-
-
-
-
-
 
 
   // File uploaded successfully, insert the file name into the database

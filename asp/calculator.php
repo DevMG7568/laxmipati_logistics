@@ -596,14 +596,10 @@ if ($result->num_rows == 1) {
                         <tr>
                           <th>#</th>
                           <th>Code</th>
-                          <th>Weight</th>
-                          <!-- <th>Rate/kg</th> -->
-                          <th>Rate (GST)</th>
-                          <!-- <th>Amount</th> -->
-                          <th>IGST</th>
-                          <!-- <th>CGST</th>
-                          <th>SGST</th> -->
+                          <th>Rate</th>
                           <th>Total</th>
+                          <th>Rate (GST)</th>
+                          <th>Total (GST)</th>
                         </tr>
                       </thead>
                       <tbody></tbody>
@@ -724,21 +720,37 @@ if ($result->num_rows == 1) {
                     tableBody.empty();
                     $.each(resultData?.data, function(key, value) {
                       var row = $("<tr>");
-                      const rateWoGST = value?.per_kg - (value?.per_kg * 18 / 118);
-                      const finalRate = Math.round(rateWoGST + (rateWoGST * 15 / 100));
-                      const finalRateWithGST = Math.round(finalRate + (finalRate * 18 / 100));
-                      const totalAmt = Math.round(value?.weight * finalRate);
-                      const igst = Math.round(totalAmt * (18 / 100));
+                      const weight = Number(value?.weight) ?? 0
+                      const rate = Math.round(value?.per_kg) ?? 0;
+                      const calculateMargin = () => {
+                        if (weight <= 5) {
+                          return 200;
+                        } else if (weight <= 10) {
+                          return 150;
+                        } else if (weight <= 20) {
+                          return 100;
+                        } else
+                          return 50;
+                      }
+                      const margin = calculateMargin();
+
+                      const finalRate = rate + margin;
+                      const finalRateWithGST = rate + margin + Math.round(margin * 18 / 100); // GST added to margin only as rate already has GST included
+                      const total = weight * finalRate;
+                      const totalWithGST = weight * finalRateWithGST;
+
                       row.append($("<td>").text(value?.id));
                       row.append($("<td>").text(value?.code));
-                      row.append($("<td>").text(value?.weight));
-                      // row.append($("<td>").text(finalRate));
+                      row.append($("<td>").text(finalRate));
+                      row.append($("<td>").text(total));
                       row.append($("<td>").text(finalRateWithGST));
-                      // row.append($("<td>").text(totalAmt));
-                      row.append($("<td>").text(igst));
-                      // row.append($("<td>").text(value?.cgst));
-                      // row.append($("<td>").text(value?.sgst));
-                      row.append($("<td>").text(Math.round(finalRateWithGST * value?.weight)));
+                      row.append($("<td>").text(totalWithGST));
+                      // const finalRate = Math.round(rateWoGST + (rateWoGST * 15 / 100));
+                      // const finalRateWithGST = Math.round(finalRate + (finalRate * 18 / 100));
+                      // const totalAmt = Math.round(value?.weight * finalRate);
+                      // const igst = Math.round(totalAmt * (18 / 100));
+                      // row.append($("<td>").text(finalRateWithGST));
+                      // row.append($("<td>").text(igst));
                       tableBody.append(row);
                     });
                   } else {

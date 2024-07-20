@@ -254,6 +254,7 @@ if ($result->num_rows > 0) {
           <th>AWB NO</th>
           <th>CONSIGNEE/SHIPPER</th>
           <th>COUNTRY</th>
+          <th>WEIGHT</th>
           <th>NOB</th>
           <th>Status</th>
           <th>ACTION</th>
@@ -294,6 +295,7 @@ if ($result->num_rows > 0) {
               <td>LPIC<?php echo $row['order_id']; ?></td>
               <td><?php echo $row['sh_full_name']; ?><br><?php echo $row['co_full_name']; ?></td>
               <td><?php echo $row['co_country']; ?></td>
+              <td><?php echo $row['weight']; ?></td>
               <td><?php echo $row['nob']; ?></td>
               <td><?php echo $row['status']; ?></td>
               <td>

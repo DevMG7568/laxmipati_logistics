@@ -211,8 +211,9 @@ $conn->close();
         </div>
         <div class="col-lg-6 mb-3">
           <label class="form-label">GST</label>
-          <select class="form-select" name="gst" id="gst">
-            <option value="18" selected>18%</option>
+          <select class="form-select" id="gst" name="gst" onchange="calculatePayment()">
+            <option value="18">Yes</option>
+            <option value="0" selected>No</option>
           </select>
         </div>
       </div>
@@ -234,7 +235,7 @@ $conn->close();
         <div class="col-lg-4">
           <div class="mb-3">
             <label class="form-label">Select Extra Charge Product </label>
-            <input type="text" name="product" class="form-control" id="gst"></input>
+            <input type="text" name="product" class="form-control"></input>
           </div>
         </div>
       </div>
@@ -337,12 +338,13 @@ $conn->close();
     function calculatePayment() {
       // Get the values from weight, rate, and extra charge input fields
       var weight = parseFloat(document.getElementById("weight").value);
-      var rate = parseFloat(document.getElementsByName("rate")[0].value);
+      var rate = parseFloat(document.getElementsByName("rate")[0].value) || 0;
       var total = weight * rate;
-      var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value);
+      var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value) || 0;
+      var gst = document.getElementById("gst").value;
 
       // Calculate the payment amount including the extra charge
-      var amount = Math.round((total + extraCharge) + (extraCharge * 18 / 100))
+      var amount = Math.round((total + extraCharge) + (gst === "18" ? extraCharge * Number(gst) / 100 : 0))
 
       // Set the calculated amount to the amount input field
       document.getElementById("amount").value = amount;

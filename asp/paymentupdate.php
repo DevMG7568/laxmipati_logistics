@@ -36,6 +36,7 @@ if (isset($_GET['id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
   // Get the form data
   $cname = $_POST['cname'];
   $cnumber = $_POST['cnumber'];
@@ -50,8 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $apayment = $_POST['apayment'];
   $dpayment = $_POST['dpayment'];
   $cpayment = $_POST['cpayment'];
-
-
 
   // Use prepared statement to update the payment record
   $sql = "UPDATE payments SET cname = '$cname', cnumber = '$cnumber', paymentmethod = '$paymentmethod', gst = '$gst', amount = '$amount', cnun = '$cnun', weight = '$weight', rate = '$rate', product = '$product', extracharge = '$extracharge', apayment = '$apayment', dpayment = '$dpayment', cpayment = '$cpayment' WHERE id = '$id' ";
@@ -194,13 +193,13 @@ $conn->close();
         </div>
         <div class="col-lg-6 mb-3">
           <label class="form-label">GST</label>
-          <select class="form-select" name="gst">
-            <option value="0" <?php if ($row['gst'] == 0) {
+          <select class="form-select" name="gst" id="gst" onchange="calculatePayment()">
+            <option value="18" <?php if ($row['gst'] == "18") {
                                 echo 'selected';
-                              } ?>>0%</option>
-            <option value="18" <?php if ($row['gst'] == 18) {
-                                  echo 'selected';
-                                } ?>>18%</option>
+                              } ?>>Yes</option>
+            <option value="0" <?php if ($row['gst'] == "0") {
+                                echo 'selected';
+                              } ?>>No</option>
           </select>
         </div>
       </div>
@@ -255,7 +254,7 @@ $conn->close();
         <div class="col-lg-4">
           <div class="mb-3">
             <label class="form-label">Payment Amount</label>
-            <input type="text" class="form-control" name="amount" id="amount" value="<?php echo $row['amount']; ?>" disabled>
+            <input type="text" class="form-control" name="amount" id="amount" readonly>
           </div>
         </div>
         <div class="col-lg-4">
@@ -303,43 +302,8 @@ $conn->close();
     </form>
 
   </div>
-  <script>
-    //     // Get references to the input fields
-    //     const amountInput = document.getElementById('amount');
-    //     const advancePaymentInput = document.getElementById('apayment');
-    //     const paymentDueInput = document.getElementById('dpayment');
-
-    //     // Add an event listener to the amount and advance payment fields
-    //     amountInput.addEventListener('input', updatePaymentDue);
-    //     advancePaymentInput.addEventListener('input', updatePaymentDue);
-
-    //     // Function to calculate and update the payment due
-    //     function updatePaymentDue() {
-    //         const amount = parseFloat(amountInput.value) || 0;
-    //         const advancePayment = parseFloat(advancePaymentInput.value) || 0;
-    //         const paymentDue = amount - advancePayment;
-    //         paymentDueInput.value = paymentDue.toFixed(2); // Adjust the precision as needed
-    //     }
-    // 
-  </script>
-
-  <script>
-    //         function calculatePayment() {
-    //         // Get the values from weight, rate, and extra charge input fields
-    // var weight = parseFloat(document.getElementById("weight").value);
-    // var rate = parseFloat(document.getElementsByName("rate")[0].value);
-    // var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value);
-
-    // // Calculate the payment amount including the extra charge
-    // var amount = (weight * rate) + extraCharge;
-
-    // // Set the calculated amount to the amount input field
-    // document.getElementById("amount").value = amount;
-
-    //         }
-  </script>
-
-  <script>
+<!-- 
+  <!-- <script>
     // Get references to the input fields
     const amountInput = document.getElementById('amount');
     const advancePaymentInput = document.getElementById('apayment');
@@ -356,17 +320,18 @@ $conn->close();
       const paymentDue = amount - advancePayment;
       paymentDueInput.value = paymentDue.toFixed(2); // Adjust the precision as needed
     }
-  </script>
+  </script> -->
   <script>
     function calculatePayment() {
       // Get the values from weight, rate, and extra charge input fields
       var weight = parseFloat(document.getElementById("weight").value);
       var rate = parseFloat(document.getElementsByName("rate")[0].value);
-      var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value);
+      var extraCharge = parseFloat(document.getElementsByName("extracharge")[0].value) || 0;
+      var gst = document.getElementById("gst").value;
 
-      var amount = Math.round(((weight * rate) + extraCharge) + (extraCharge * 18 / 100))
+      var amount = Math.round(((weight * rate) + extraCharge) + (gst === "18" ? extraCharge * Number(gst) / 100 : 0))
 
-      // Set the calculated amount to the amount input field
+      // Set the calculated amount to the amount input field      
       document.getElementById("amount").value = amount;
     }
 

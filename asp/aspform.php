@@ -1117,7 +1117,7 @@ $conn->close();
                         <div class="row">
                           <label class="col-sm-3 col-form-label">Reference</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control form-control-sm" id="co_referance" name="co_referance" disabled>
+                            <input type="text" class="form-control form-control-sm" id="co_referance" name="co_referance" readonly>
                           </div>
                         </div>
                       </div>
@@ -1290,7 +1290,7 @@ $conn->close();
                         <div class="row clearfix">
                           <div class="col-sm-12">
                             <div class="form-group required">
-                              <select name="co_country" style="width:100%;height:36px;" id="country_booking" required disabled>
+                              <select name="co_country" style="width:100%;height:36px;" id="country_booking" required readonly>
                                 <option value="Afghanistan">AF - Afghanistan</option>
                                 <option value="Aland Island (Finland)">EUR - Aland Island (Finland)</option>
                                 <option value="Albania">AL - Albania</option>
@@ -1644,19 +1644,19 @@ $conn->close();
                           </div>
                           <!-- <div class="col-sm-6">
                             <div class="form-group ">
-                              <input class="form-control form-control-sm" name="order_currier_date" id="dateInputBooking" type="date" disabled>
+                              <input class="form-control form-control-sm" name="order_currier_date" id="dateInputBooking" type="date" readonly>
                             </div>
                           </div> -->
                         </div>
                         <div class="row clearfix">
                           <div class="col-sm-6">
                             <div class="form-group ">
-                              <input id="referance_booking" type="text" placeholder="Shipment Referance No" class="form-control form-control-sm" name="sh_referance" disabled>
+                              <input id="referance_booking" type="text" placeholder="Shipment Referance No" class="form-control form-control-sm" name="sh_referance" readonly>
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group  required">
-                              <input id="note_booking" type="text" placeholder="Remarks" class="form-control form-control-sm" name="note" disabled>
+                              <input id="note_booking" type="text" placeholder="Remarks" class="form-control form-control-sm" name="note" readonly>
                             </div>
                           </div>
                         </div>
@@ -1818,7 +1818,7 @@ $conn->close();
 
     function clearShipper() {
       $("#sh_id").val("");
-      $("#sh_full_name").val("").prop('disabled', false);
+      $("#sh_full_name").val("").prop('readonly', false);
       $("#sh_zip_code").val("").attr('readonly', false);
       $("#sh_add1").val("").attr('readonly', false);
       $("#sh_add2").val("").attr('readonly', false);
@@ -1832,8 +1832,8 @@ $conn->close();
       $("#sh_pan_no").val("").attr('readonly', false);
       $("#sh_pan_no1").val("").attr('readonly', false);
       $("#sh_email").val("").attr('readonly', false);
-      $("#sh_document_type").val("").change().prop('disabled', false);
-      $("#sh_document_type1").val("").change().prop('disabled', false);
+      $("#sh_document_type").val("").change().prop('readonly', false);
+      $("#sh_document_type1").val("").change().prop('readonly', false);
       $("#documentLink").html("");
       $("#documentLink_back").html("");
       $("#documentLink1").html("");
@@ -1850,7 +1850,7 @@ $conn->close();
           $(this).val(ui.data);
 
           $("#sh_id").val(ui.sh_id);
-          $("#sh_full_name").val(ui.label).prop('disabled', true);
+          $("#sh_full_name").val(ui.label).prop('readonly', true);
           $("#sh_zip_code").val(ui.sh_zip_code).attr('readonly', true);
           $("#sh_add1").val(ui.sh_add1).attr('readonly', true);
           $("#sh_add2").val(ui.sh_add2).attr('readonly', true);
@@ -1864,8 +1864,8 @@ $conn->close();
           $("#sh_pan_no").val(ui.sh_pan_no).attr('readonly', true);
           $("#sh_pan_no1").val(ui.sh_pan_no1).attr('readonly', true);
           $("#sh_email").val(ui.sh_email).attr('readonly', false);
-          $("#sh_document_type").val(ui.sh_document_type).change().prop('disabled', true);
-          $("#sh_document_type1").val(ui.sh_document_type1).change().prop('disabled',
+          $("#sh_document_type").val(ui.sh_document_type).change().prop('readonly', true);
+          $("#sh_document_type1").val(ui.sh_document_type1).change().prop('readonly',
             true);
 
           if (ui.sh_document != "") {
@@ -1928,7 +1928,7 @@ $conn->close();
 
     function clearConsignee() {
       $("#co_id").val("");
-      $("#co_full_name").val("").prop('disabled', false);
+      $("#co_full_name").val("").prop('readonly', false);
       $("#co_zip_code").val("").attr('readonly', false);
       $("#co_add1").val("").attr('readonly', false);
       $("#co_add2").val("").attr('readonly', false);
@@ -1953,7 +1953,7 @@ $conn->close();
           $(this).val(ui.data);
           // $('input[name="hsn_code[]"]').first().val( ui.hsn_code );
           $("#co_id").val(ui.co_id).attr('readonly', true);
-          $("#co_full_name").val(ui.label).prop('disabled', true);
+          $("#co_full_name").val(ui.label).prop('readonly', true);
           $("#co_zip_code").val(ui.co_zip_code).attr('readonly', true);
           $("#co_add1").val(ui.co_add1).attr('readonly', true);
           $("#co_add2").val(ui.co_add2).attr('readonly', true);
