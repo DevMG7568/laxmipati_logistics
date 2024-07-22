@@ -97,48 +97,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Update the data in the database
   $update_sql = "UPDATE order_details SET
-                    sh_full_name = '$sh_full_name',
-                    sh_zip_code = '$sh_zip_code',
-                    sh_add1 = '$sh_add1',
-                    sh_add2 = '$sh_add2',
-                    sh_add3 = '$sh_add3',
-                    sh_city = '$sh_city',
-                    sh_state = '$sh_state',
-                    sh_country = '$sh_country',
-                    sh_ph_no = '$sh_ph_no',
-                    sh_ph_no1 = '$sh_ph_no1',
-                    sh_email = '$sh_email',
-                    sh_gst = '$sh_gst',
-                    sh_attention = '$sh_attention',
-                    sh_referance = '$sh_referance',
-                    sh_document_type = '$sh_document_type',
-                    sh_pan_no = '$sh_pan_no',
-                    sh_document_type1 = '$sh_document_type1',
-                    sh_pan_no1 = '$sh_pan_no1',
-                    co_full_name = '$co_full_name',
-                    co_zip_code = '$co_zip_code',
-                    co_add1 = '$co_add1',
-                    co_add2 = '$co_add2',
-                    co_add3 = '$co_add3',
-                    co_city = '$co_city',
-                    co_state = '$co_state',
-                    co_country = '$co_country',
-                    co_ph_no = '$co_ph_no',
-                    co_ph_no1 = '$co_ph_no1',
-                    co_email = '$co_email',
-                    co_attention = '$co_attention',
-                    co_referance = '$co_referance',
-                    note = '$note',
-                    awb_show = '$awb_show',
-                    gift_type = '$gift_type',
-                    currency = '$currency',
-                    documentImage = '$documentImage',
-                    documentImage_back = '$documentImage_back',
-                    documentImage1 = '$documentImage1',
-                    status = '$status',
-                    invoice_no_date = '$invoice_no_date',
-                    adate = '$adate'
-                    WHERE id = $id";
+                sh_full_name = '$sh_full_name',
+                sh_zip_code = '$sh_zip_code',
+                sh_add1 = '$sh_add1',
+                sh_add2 = '$sh_add2',
+                sh_add3 = '$sh_add3',
+                sh_city = '$sh_city',
+                sh_state = '$sh_state',
+                sh_country = '$sh_country',
+                sh_ph_no = '$sh_ph_no',
+                sh_ph_no1 = '$sh_ph_no1',
+                sh_email = '$sh_email',
+                sh_gst = '$sh_gst',
+                sh_attention = '$sh_attention',
+                sh_referance = '$sh_referance',
+                sh_document_type = '$sh_document_type',
+                sh_pan_no = '$sh_pan_no',
+                sh_document_type1 = '$sh_document_type1',
+                sh_pan_no1 = '$sh_pan_no1',
+                co_full_name = '$co_full_name',
+                co_zip_code = '$co_zip_code',
+                co_add1 = '$co_add1',
+                co_add2 = '$co_add2',
+                co_add3 = '$co_add3',
+                co_city = '$co_city',
+                co_state = '$co_state',
+                co_country = '$co_country',
+                co_ph_no = '$co_ph_no',
+                co_ph_no1 = '$co_ph_no1',
+                co_email = '$co_email',
+                co_attention = '$co_attention',
+                co_referance = '$co_referance',
+                note = '$note',
+                awb_show = '$awb_show',
+                gift_type = '$gift_type',
+                currency = '$currency',
+                status = '$status',
+                invoice_no_date = '$invoice_no_date',
+                adate = '$adate'";
+
+  // Append file fields if they exist
+  if (!empty($documentImage)) {
+    $update_sql .= ", documentImage = '$documentImage'";
+  }
+  if (!empty($documentImage_back)) {
+    $update_sql .= ", documentImage_back = '$documentImage_back'";
+  }
+  if (!empty($documentImage1)) {
+    $update_sql .= ", documentImage1 = '$documentImage1'";
+  }
+
+  // Finish the SQL statement
+  $update_sql .= " WHERE id = $id";
 
   if ($conn->query($update_sql) === TRUE) {
     header("Location: allorder.php");
