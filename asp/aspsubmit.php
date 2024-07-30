@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $co_zip_code = $_POST['co_zip_code'];
   $co_add1 = $_POST['co_add1'];
   $co_add2 = $_POST['co_add2'];
-  $sh_add3 = isset($_POST['co_add3']) ? $_POST['co_add3'] : '';
+  $co_add3 = isset($_POST['co_add3']) ? $_POST['co_add3'] : '';
   $co_city = $_POST['co_city'];
   $co_state = $_POST['co_state'];
   $co_country = $_POST['co_country'];
